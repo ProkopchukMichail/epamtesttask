@@ -13,6 +13,7 @@ public class TestData {
     public static final Department IT=new Department("IT");
     public static final Department FINANCE=new Department("Finance");
     public static final Department HR=new Department("HR");
+    public static final Department NEWDEPARTMENT=new Department("NEW DEPARTMENT");
 
     public static final List<Department> DEPARTMENTS= Arrays.asList(ADMINISTRATION,FINANCE,HR,IT);
 }

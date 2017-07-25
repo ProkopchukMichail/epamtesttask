@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by comp on 25.07.2017.
  */
-public class Employe  extends HasId{
+public class Employe{
     private String departmentName;
     private String fullname;
     private Date birthday;

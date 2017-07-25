@@ -1,11 +1,17 @@
 package testtask.testtaskDAO;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.junit.runner.Description;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import testtask.TestData;
 import testtask.dao.DepartmentDAO;
@@ -26,6 +32,7 @@ public class DepartmentDAOTest {
     private DepartmentDAO departmentDAO;
 
     @Test
+    @Sql(scripts = "classpath:database/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
     public void testGetAll() {
         Assert.assertEquals(departmentDAO.getAll(), DEPARTMENTS);
     }
@@ -34,6 +41,7 @@ public class DepartmentDAOTest {
     public void testGet() {
         Assert.assertEquals(departmentDAO.get(1), ADMINISTRATION);
     }
+
 
     @Test
     public void testDelete() {
