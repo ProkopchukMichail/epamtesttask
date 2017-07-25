@@ -1,0 +1,21 @@
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS employe;
+
+CREATE TABLE department
+(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  departmentName VARCHAR(45) NOT NULL UNIQUE
+) ENGINE = InnoDB;
+
+CREATE TABLE employe
+(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  departmentName VARCHAR(45) NOT NULL,
+  fullname VARCHAR(45) NOT NULL,
+  birthday DATE NOT NULL,
+  salary INT(11) NOT NULL DEFAULT 500,
+  KEY FK_10000 (departmentName),
+  CONSTRAINT FK_1 FOREIGN KEY (departmentName) REFERENCES department(departmentName) ON DELETE CASCADE
+) ENGINE = InnoDB;
+
+
