@@ -16,6 +16,7 @@
         </fileset>
         <fileset id="initializer testtask.config.TestTaskInitializer root context" profiles="mysql" autodetected="true" />
         <fileset id="initializer testtask.config.TestTaskInitializer servlet context" profiles="mysql" autodetected="true" />
+        <fileset id="web testtask servlet context" profiles="hsql" autodetected="true" />
       </configuration>
     </facet>
     <facet type="web" name="Web">

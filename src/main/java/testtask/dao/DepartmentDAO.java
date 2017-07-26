@@ -20,7 +20,7 @@ import java.util.List;
  * Created by comp on 23.07.2017.
  */
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 public class DepartmentDAO {
 
     private final static RowMapper<Department> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Department.class);

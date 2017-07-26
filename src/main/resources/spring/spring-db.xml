@@ -18,6 +18,7 @@
     <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
+
     <beans profile="mysql">
         <context:property-placeholder location="classpath:database/mysql.properties" system-properties-mode="OVERRIDE"/>
 

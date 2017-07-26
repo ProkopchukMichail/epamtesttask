@@ -1,17 +1,27 @@
 package testtask.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * Created by comp on 25.07.2017.
  */
-public class Employe{
+public class Employe extends HasId{
     private String departmentName;
     private String fullname;
-    private Date birthday;
+    private LocalDateTime birthday;
     private Integer salary;
 
-    public Employe(String departmentName, String fullname, Date birthday, Integer salary) {
+    public Employe(int id, String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
+        super(id);
+        this.departmentName = departmentName;
+        this.fullname = fullname;
+        this.birthday = birthday;
+        this.salary = salary;
+    }
+
+    public Employe(String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
         this.departmentName = departmentName;
         this.fullname = fullname;
         this.birthday = birthday;
@@ -37,11 +47,11 @@ public class Employe{
         this.fullname = fullname;
     }
 
-    public Date getBirthday() {
+    public LocalDateTime getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDateTime birthday) {
         this.birthday = birthday;
     }
 

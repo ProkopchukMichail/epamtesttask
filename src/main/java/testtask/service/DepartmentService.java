@@ -15,6 +15,7 @@ import java.util.List;
 public class DepartmentService {
 
     private DepartmentDAO departmentDAO;
+
     @Autowired
     public DepartmentService(DepartmentDAO departmentDAO){
         this.departmentDAO=departmentDAO;
