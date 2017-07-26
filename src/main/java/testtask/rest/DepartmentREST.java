@@ -1,7 +1,11 @@
 package testtask.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import testtask.model.Department;
+import testtask.service.DepartmentService;
+
 import java.util.List;
 
 /**
@@ -9,10 +13,9 @@ import java.util.List;
  */
 @RestController()
 @RequestMapping(value = DepartmentREST.DEPARTMENT_REST_URL)
-public class DepartmentREST extends AbstractDepartmentController {
+public class DepartmentREST extends AbstractDepartmentController{
 
     static final String DEPARTMENT_REST_URL = "/rest//departments";
-
 
     @GetMapping
     public List<Department> getAll() {
@@ -23,7 +26,6 @@ public class DepartmentREST extends AbstractDepartmentController {
     public Department getDepartment(@PathVariable int id) {
         return super.get(id);
     }
-
     @DeleteMapping("/{id}")
     public boolean delete(@PathVariable int id) {
         return super.delete(id);
@@ -38,4 +40,5 @@ public class DepartmentREST extends AbstractDepartmentController {
     public Department update(Department department) {
         return super.update(department);
     }
+
 }

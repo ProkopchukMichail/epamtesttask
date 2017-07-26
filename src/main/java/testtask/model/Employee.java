@@ -6,21 +6,21 @@ import java.time.LocalDateTime;
  * Created by comp on 25.07.2017.
  */
 public class Employee extends HasId{
-    private String departmentName;
+    private Integer department_id;
     private String fullname;
     private LocalDateTime birthday;
     private Integer salary;
 
-    public Employee(int id, String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
+    public Employee(Integer id, Integer department_id, String fullname, LocalDateTime birthday, Integer salary) {
         super(id);
-        this.departmentName = departmentName;
+        this.department_id = department_id;
         this.fullname = fullname;
         this.birthday = birthday;
         this.salary = salary;
     }
 
-    public Employee(String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
-        this.departmentName = departmentName;
+    public Employee(Integer department_id, String fullname, LocalDateTime birthday, Integer salary) {
+        this.department_id = department_id;
         this.fullname = fullname;
         this.birthday = birthday;
         this.salary = salary;
@@ -29,12 +29,12 @@ public class Employee extends HasId{
     public Employee() {
     }
 
-    public String getDepartmentName() {
-        return departmentName;
+    public Integer getDepartment_id() {
+        return department_id;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartment_id(Integer department_id) {
+        this.department_id = department_id;
     }
 
     public String getFullname() {
@@ -66,18 +66,18 @@ public class Employee extends HasId{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Employee employe = (Employee) o;
+        Employee employee = (Employee) o;
 
-        if (departmentName != null ? !departmentName.equals(employe.departmentName) : employe.departmentName != null)
+        if (department_id != null ? !department_id.equals(employee.department_id) : employee.department_id != null)
             return false;
-        if (fullname != null ? !fullname.equals(employe.fullname) : employe.fullname != null) return false;
-        if (birthday != null ? !birthday.equals(employe.birthday) : employe.birthday != null) return false;
-        return salary != null ? salary.equals(employe.salary) : employe.salary == null;
+        if (fullname != null ? !fullname.equals(employee.fullname) : employee.fullname != null) return false;
+        if (birthday != null ? !birthday.equals(employee.birthday) : employee.birthday != null) return false;
+        return salary != null ? salary.equals(employee.salary) : employee.salary == null;
     }
 
     @Override
     public int hashCode() {
-        int result = departmentName != null ? departmentName.hashCode() : 0;
+        int result = department_id != null ? department_id.hashCode() : 0;
         result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (salary != null ? salary.hashCode() : 0);
@@ -87,7 +87,7 @@ public class Employee extends HasId{
     @Override
     public String toString() {
         return "Employee{" +
-                "departmentName='" + departmentName + '\'' +
+                "department_id=" + department_id +
                 ", fullname='" + fullname + '\'' +
                 ", birthday=" + birthday +
                 ", salary=" + salary +

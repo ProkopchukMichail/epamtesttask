@@ -2,7 +2,7 @@ package testtask.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import testtask.dao.jdbc.JdbcDepartmentDAO;
+import testtask.dao.DepartmentDAO;
 import testtask.model.Department;
 
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.List;
  * Created by comp on 23.07.2017.
  */
 @Service
-public class DepartmentServiceImpl implements DepartmentService{
+public class DepartmentServiceImpl implements DepartmentService {
 
-    private JdbcDepartmentDAO departmentDAO;
+    private DepartmentDAO departmentDAO;
 
     @Autowired
-    public DepartmentServiceImpl(JdbcDepartmentDAO departmentDAO){
+    public DepartmentServiceImpl(DepartmentDAO departmentDAO){
         this.departmentDAO=departmentDAO;
     }
 

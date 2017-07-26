@@ -2,9 +2,8 @@ package testtask.rest;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import testtask.model.Department;
-import testtask.service.DepartmentServiceImpl;
+import testtask.service.DepartmentService;
 
 import java.util.List;
 
@@ -13,15 +12,10 @@ import java.util.List;
  */
 public abstract class AbstractDepartmentController {
     private final Logger logger= Logger.getLogger(getClass());
-    private DepartmentServiceImpl departmentService;
 
     @Autowired
-    public AbstractDepartmentController(DepartmentServiceImpl departmentService) {
-        this.departmentService = departmentService;
-    }
+    private DepartmentService departmentService;
 
-    public AbstractDepartmentController() {
-    }
 
     public List<Department> getAll(){
         logger.debug("get all departments");

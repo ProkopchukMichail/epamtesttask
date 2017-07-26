@@ -2,7 +2,7 @@ package testtask.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import testtask.dao.jdbc.JdbcEmployeeDAO;
+import testtask.dao.EmployeeDAO;
 import testtask.model.Employee;
 
 import java.util.List;
@@ -11,13 +11,13 @@ import java.util.List;
  * Created by comp on 25.07.2017.
  */
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
-    private JdbcEmployeeDAO employeeDAO;
+    private EmployeeDAO employeeDAO;
 
     @Autowired
-    public EmployeeServiceImpl(JdbcEmployeeDAO employeDAO) {
-        this.employeeDAO = employeDAO;
+    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
+        this.employeeDAO = employeeDAO;
     }
 
     public List<Employee> getAll(){return employeeDAO.getAll();}

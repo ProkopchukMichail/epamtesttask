@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Repository
 @Transactional(readOnly = true)
-public class JdbcDepartmentDAO  implements DepartmentDAO {
+public class JdbcDepartmentDAOImpl implements DepartmentDAO {
 
     private final static RowMapper<Department> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Department.class);
 
@@ -33,7 +33,7 @@ public class JdbcDepartmentDAO  implements DepartmentDAO {
     private final SimpleJdbcInsert insertDepartment;
 
     @Autowired
-    public JdbcDepartmentDAO(DataSource dataSource, JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
+    public JdbcDepartmentDAOImpl(DataSource dataSource, JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.insertDepartment = new SimpleJdbcInsert(dataSource)
                 .withTableName("departments")
                 .usingGeneratedKeyColumns("id");

@@ -3,7 +3,7 @@ package testtask.rest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import testtask.model.Employee;
-import testtask.service.EmployeeServiceImpl;
+import testtask.service.EmployeeService;
 
 import java.util.List;
 
@@ -12,16 +12,10 @@ import java.util.List;
  */
 public class AbstractEmployeeController {
 
-    private EmployeeServiceImpl employeeService;
-    private Logger logger=Logger.getLogger(getClass());
+    private final Logger logger=Logger.getLogger(getClass());
 
     @Autowired
-    public AbstractEmployeeController(EmployeeServiceImpl employeeService) {
-        this.employeeService = employeeService;
-    }
-
-    public AbstractEmployeeController() {
-    }
+    private EmployeeService employeeService;
 
     public Employee get(int id){
         logger.debug("get employee "+id);

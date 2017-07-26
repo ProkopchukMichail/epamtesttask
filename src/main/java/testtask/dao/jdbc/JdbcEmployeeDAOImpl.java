@@ -1,5 +1,6 @@
 package testtask.dao.jdbc;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class JdbcEmployeeDAO implements EmployeeDAO {
+public class JdbcEmployeeDAOImpl implements EmployeeDAO {
 
     private final static RowMapper<Employee> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Employee.class);
 
@@ -31,7 +32,8 @@ public class JdbcEmployeeDAO implements EmployeeDAO {
 
     private final SimpleJdbcInsert insertEmployee;
 
-    public JdbcEmployeeDAO(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate, DataSource dataSource) {
+    @Autowired
+    public JdbcEmployeeDAOImpl(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate, DataSource dataSource) {
         this.jdbcTemplate = jdbcTemplate;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.insertEmployee = new SimpleJdbcInsert(dataSource)
@@ -64,7 +66,7 @@ public class JdbcEmployeeDAO implements EmployeeDAO {
             } else
                 namedParameterJdbcTemplate.update(
                         "UPDATE employees SET" +
-                                " departmentName=:departmentName," +
+                                " department_id=:department_id," +
                                 " fullname=:fullname," +
                                 " birthday=:birthday," +
                                 " salary=:salary" +
