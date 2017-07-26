@@ -1,43 +1,41 @@
 package testtask.rest;
 
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.web.bind.annotation.*;
 import testtask.model.Department;
-import testtask.service.DepartmentService;
-
 import java.util.List;
 
 /**
  * Created by comp on 23.07.2017.
  */
 @RestController()
-@RequestMapping(value = DepartmentREST.REST_URL)
-public class DepartmentREST {
+@RequestMapping(value = DepartmentREST.DEPARTMENT_REST_URL)
+public class DepartmentREST extends AbstractDepartmentController {
 
-    static final  String REST_URL="/rest/";
-    private final Logger logger= Logger.getLogger(getClass());
-    private DepartmentService departmentService;
+    static final String DEPARTMENT_REST_URL = "/rest//departments";
 
-    @Autowired
-    public DepartmentREST(DepartmentService departmentService){
-        this.departmentService=departmentService;
+
+    @GetMapping
+    public List<Department> getAll() {
+        return super.getAll();
     }
 
-    @GetMapping("/departments")
-    public List<Department> getAllDepartments(){
-        logger.debug("get all");
-        return departmentService.getAll();
+    @GetMapping("/{id}")
+    public Department getDepartment(@PathVariable int id) {
+        return super.get(id);
     }
 
-    @GetMapping("/department/{id}")
-    public Department getDepartment(@PathVariable int id){
-        logger.debug("get department "+id);
-        return departmentService.get(id);
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable int id) {
+        return super.delete(id);
     }
 
+    @PutMapping("/{id}")
+    public Department create(Department department) {
+        return super.create(department);
+    }
 
-
-
+    @PostMapping
+    public Department update(Department department) {
+        return super.update(department);
+    }
 }

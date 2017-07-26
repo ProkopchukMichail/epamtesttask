@@ -1,13 +1,15 @@
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS employe;
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS employees;
+COMMIT;
 
-CREATE TABLE department
+CREATE TABLE departments
 (
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
   departmentName VARCHAR(45) NOT NULL UNIQUE
 ) ENGINE = InnoDB;
+COMMIT;
 
-CREATE TABLE employe
+CREATE TABLE employees
 (
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
   departmentName VARCHAR(45) NOT NULL,
@@ -15,7 +17,8 @@ CREATE TABLE employe
   birthday DATE NOT NULL,
   salary INT(11) NOT NULL DEFAULT 500,
   KEY FK_10000 (departmentName),
-  CONSTRAINT FK_1 FOREIGN KEY (departmentName) REFERENCES department(departmentName) ON DELETE CASCADE
+  CONSTRAINT FK_1 FOREIGN KEY (departmentName) REFERENCES departments(departmentName) ON DELETE CASCADE
 ) ENGINE = InnoDB;
+COMMIT;
 
 

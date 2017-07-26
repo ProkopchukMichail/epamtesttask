@@ -1,4 +1,4 @@
-package testtask.dao;
+package testtask.dao.jdbc;
 
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.support.DataAccessUtils;
@@ -10,8 +10,8 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import testtask.model.Department;
-import testtask.model.Employe;
+import testtask.dao.EmployeeDAO;
+import testtask.model.Employee;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -21,49 +21,49 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class EmployeDAO {
+public class JdbcEmployeeDAO implements EmployeeDAO {
 
-    private final static RowMapper<Employe> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Employe.class);
+    private final static RowMapper<Employee> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Employee.class);
 
     private final JdbcTemplate jdbcTemplate;
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
-    private final SimpleJdbcInsert insertEmploye;
+    private final SimpleJdbcInsert insertEmployee;
 
-    public EmployeDAO(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate, DataSource dataSource) {
+    public JdbcEmployeeDAO(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate, DataSource dataSource) {
         this.jdbcTemplate = jdbcTemplate;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
-        this.insertEmploye = new SimpleJdbcInsert(dataSource)
-                .withTableName("employe")
+        this.insertEmployee = new SimpleJdbcInsert(dataSource)
+                .withTableName("employees")
                 .usingGeneratedKeyColumns("id");
     }
 
-    public List<Employe> getAll() {
-        return jdbcTemplate.query("SELECT * FROM employe", ROW_MAPPER);
+    public List<Employee> getAll() {
+        return jdbcTemplate.query("SELECT * FROM employees", ROW_MAPPER);
     }
 
-    public Employe get(int id){
+    public Employee get(int id){
         return DataAccessUtils.singleResult(
-                jdbcTemplate.query("SELECT * FROM employe WHERE id=?",ROW_MAPPER,id)
+                jdbcTemplate.query("SELECT * FROM employees WHERE id=?",ROW_MAPPER,id)
         );
     }
 
     @Transactional
     public boolean delete(int id){
-        return jdbcTemplate.update("DELETE FROM employe WHERE id=?",id)!=0;
+        return jdbcTemplate.update("DELETE FROM employees WHERE id=?",id)!=0;
     }
 
     @Transactional
-    public Employe save(Employe employe) {
-        BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(employe);
+    public Employee save(Employee employee) {
+        BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(employee);
         try {
-            if (employe.isNew()) {
-                employe.setId(insertEmploye.executeAndReturnKey(parameterSource).intValue());
+            if (employee.isNew()) {
+                employee.setId(insertEmployee.executeAndReturnKey(parameterSource).intValue());
 
             } else
                 namedParameterJdbcTemplate.update(
-                        "UPDATE employe SET" +
+                        "UPDATE employees SET" +
                                 " departmentName=:departmentName," +
                                 " fullname=:fullname," +
                                 " birthday=:birthday," +
@@ -71,7 +71,7 @@ public class EmployeDAO {
                                 " WHERE id=:id", parameterSource);
         } catch (DuplicateKeyException e) {
         }
-        return employe;
+        return employee;
     }
 
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import testtask.dao.jdbc.JdbcDepartmentDAO;
+import testtask.dao.jdbc.JdbcEmployeeDAO;
 
 import java.util.Arrays;
 
@@ -22,25 +24,25 @@ import static testtask.TestData.HR_DEPARTMENT;
 @ActiveProfiles("hsql")
 public class DAOTest {
     @Autowired
-    private EmployeDAO employeDAO;
+    private JdbcEmployeeDAO employeeDAO;
     @Autowired
-    private DepartmentDAO departmentDAO;
+    private JdbcDepartmentDAO departmentDAO;
 
     @Test
     public void daoTest(){
         //getALL
-        Assert.assertEquals(employeDAO.getAll(),EMPLOYES);
+        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES);
         //get one
-        Assert.assertEquals(employeDAO.get(5),ADMIN1);
+        Assert.assertEquals(employeeDAO.get(5),ADMIN1);
         //update
-        employeDAO.save(HR_FOR_UPDATE);
-        Assert.assertEquals(employeDAO.getAll(), EMPLOYES_AFTER_UPDATE);
+        employeeDAO.save(HR_FOR_UPDATE);
+        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES_AFTER_UPDATE);
         //delete
-        employeDAO.delete(10);
-        Assert.assertEquals(employeDAO.getAll(), Arrays.asList(ADMIN1, ADMIN2,DEV1,DEV2,FINANCIER));
-        //save
-        employeDAO.save(HR);
-        Assert.assertEquals(employeDAO.getAll(),EMPLOYES);
+        employeeDAO.delete(10);
+        Assert.assertEquals(employeeDAO.getAll(), Arrays.asList(ADMIN1, ADMIN2,DEV1,DEV2,FINANCIER));
+        //create
+        employeeDAO.save(HR);
+        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES);
         //getAll
         Assert.assertEquals(departmentDAO.getAll(), DEPARTMENTS);
         //get one
@@ -51,7 +53,7 @@ public class DAOTest {
         //delete
         departmentDAO.delete(4);
         Assert.assertEquals(departmentDAO.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
-        //save
+        //create
         departmentDAO.save(HR_DEPARTMENT);
         Assert.assertEquals(departmentDAO.getAll(), DEPARTMENTS);
     }

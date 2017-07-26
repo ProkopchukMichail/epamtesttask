@@ -1,19 +1,17 @@
 package testtask.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created by comp on 25.07.2017.
  */
-public class Employe extends HasId{
+public class Employee extends HasId{
     private String departmentName;
     private String fullname;
     private LocalDateTime birthday;
     private Integer salary;
 
-    public Employe(int id, String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
+    public Employee(int id, String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
         super(id);
         this.departmentName = departmentName;
         this.fullname = fullname;
@@ -21,14 +19,14 @@ public class Employe extends HasId{
         this.salary = salary;
     }
 
-    public Employe(String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
+    public Employee(String departmentName, String fullname, LocalDateTime birthday, Integer salary) {
         this.departmentName = departmentName;
         this.fullname = fullname;
         this.birthday = birthday;
         this.salary = salary;
     }
 
-    public Employe() {
+    public Employee() {
     }
 
     public String getDepartmentName() {
@@ -68,7 +66,7 @@ public class Employe extends HasId{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Employe employe = (Employe) o;
+        Employee employe = (Employee) o;
 
         if (departmentName != null ? !departmentName.equals(employe.departmentName) : employe.departmentName != null)
             return false;
@@ -88,7 +86,7 @@ public class Employe extends HasId{
 
     @Override
     public String toString() {
-        return "Employe{" +
+        return "Employee{" +
                 "departmentName='" + departmentName + '\'' +
                 ", fullname='" + fullname + '\'' +
                 ", birthday=" + birthday +
