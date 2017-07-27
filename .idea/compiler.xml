@@ -6,11 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="epamtesttask10" />
+        <module name="model" />
+        <module name="testtask-model" />
+        <module name="testtask-restservice" />
+        <module name="testtask-webapplication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="epamtesttask10" target="1.5" />
+      <module name="model" target="1.5" />
+      <module name="rest service" target="1.5" />
+      <module name="restservice" target="1.5" />
+      <module name="testtask-model" target="1.5" />
+      <module name="testtask-restservice" target="1.5" />
+      <module name="testtask-webapplication" target="1.5" />
+      <module name="testtaskmodel" target="1.5" />
+      <module name="webapplication" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

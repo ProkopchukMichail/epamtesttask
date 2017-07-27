@@ -2,20 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>epamtesttask</artifactId>
+        <groupId>epamtesttask</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>epamtesttask</groupId>
-    <artifactId>epamtesttask</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>testtask-restservice</module>
-        <module>testtask-model</module>
-        <module>testtask-webapplication</module>
-    </modules>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
+    <artifactId>testtask-webapplication</artifactId>
+<!--    <packaging>war</packaging>-->
+    <name>testtask-webapplication</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>epamtesttask</groupId>
+            <artifactId>testtask-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -28,4 +33,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

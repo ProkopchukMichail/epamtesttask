@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/epamtesttask10.iml" filepath="$PROJECT_DIR$/epamtesttask10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testtask-model/testtask-model.iml" filepath="$PROJECT_DIR$/testtask-model/testtask-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testtask-restservice/testtask-restservice.iml" filepath="$PROJECT_DIR$/testtask-restservice/testtask-restservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/testtask-webapplication/testtask-webapplication.iml" filepath="$PROJECT_DIR$/testtask-webapplication/testtask-webapplication.iml" />
     </modules>
   </component>
 </project>
