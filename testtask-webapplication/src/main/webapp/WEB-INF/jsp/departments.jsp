@@ -12,6 +12,7 @@
     <title>EPAM test task</title>
 </head>
 <body>
+<a href="departments/create">Create</a>
 <table>
     <thead>
     <tr>
@@ -34,6 +35,9 @@
             </td>
             <td>
                 <a href="departments/delete?id=${department.id}">Delete</a>
+            </td>
+            <td>
+                <a href="departments/update?id=${department.id}">Update</a>
             </td>
         </tr>
     </c:forEach>

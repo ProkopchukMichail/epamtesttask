@@ -1,6 +1,5 @@
 package restservice.dao.jdbc;
 
-import model.Department;
 import model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -16,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import restservice.dao.EmployeeDAO;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -86,6 +83,7 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
 
     public Integer getMidSalary(int id) {
         List<Employee> salaries = getAllByDepartments(id);
+        if(salaries.size()==0) return 0;
         Integer midsalary=0;
         for(Employee s: salaries) midsalary+=s.getSalary();
         return midsalary/ salaries.size();

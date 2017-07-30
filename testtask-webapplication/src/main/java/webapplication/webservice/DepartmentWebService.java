@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,5 +31,13 @@ public class DepartmentWebService {
 
     public void delete(int id){
         restTemplate.delete(DEPARTMENT_REST_URL+"/delete/"+id);
+    }
+
+    public void update(Department department){
+        restTemplate.postForObject(DEPARTMENT_REST_URL+"/post",department,Department.class);
+    }
+
+    public void create(Department department) {
+        restTemplate.put(DEPARTMENT_REST_URL+"/put", department, Department.class);
     }
 }

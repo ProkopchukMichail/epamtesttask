@@ -61,7 +61,7 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
     public Department save(Department department) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(department);
         try {
-            if (department.isNew()) {
+            if (department.getId()==0) {
                 department.setId(insertDepartment.executeAndReturnKey(parameterSource).intValue());
 
             } else

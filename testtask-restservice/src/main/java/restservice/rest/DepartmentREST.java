@@ -1,16 +1,16 @@
 package restservice.rest;
 
 import model.Department;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import static org.springframework.http.MediaType.*;
 
 /**
  * Created by comp on 23.07.2017.
  */
 @RestController()
-@RequestMapping(value = DepartmentREST.DEPARTMENT_REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = DepartmentREST.DEPARTMENT_REST_URL, produces = APPLICATION_JSON_VALUE)
 public class DepartmentREST extends AbstractDepartmentController{
 
     static final String DEPARTMENT_REST_URL = "/rest/departments";
@@ -29,14 +29,14 @@ public class DepartmentREST extends AbstractDepartmentController{
         return super.delete(id);
     }
 
-    @PutMapping("/{id}")
-    public Department create(Department department) {
+    @PutMapping(value = "/put", consumes = APPLICATION_JSON_VALUE)
+    public Department create(@RequestBody Department department) {
         return super.create(department);
     }
 
-    @PostMapping
-    public Department update(Department department) {
-        return super.update(department);
+    @PostMapping(value = "/post", consumes = APPLICATION_JSON_VALUE)
+    public Department update(@RequestBody Department department) {
+         return super.update(department);
     }
 
 }

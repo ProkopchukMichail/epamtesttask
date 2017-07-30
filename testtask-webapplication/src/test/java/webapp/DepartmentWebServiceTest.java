@@ -38,4 +38,10 @@ public class DepartmentWebServiceTest {
         departmentWebService.delete(4);
         Assert.assertEquals(departmentWebService.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
     }
+
+    @Test
+    public void testUpdate(){
+        departmentWebService.update(HR_DEPARTMENT_FOR_UPDATE);
+        Assert.assertEquals(departmentWebService.getAll(), DEPARTMENTS_AFTER_UPDATE);
+    }
 }
