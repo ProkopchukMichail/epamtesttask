@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="epam_testtask@localhost" uuid="e0a9e641-95e7-45e8-8da6-7aa6643a7d8f">
+    <data-source source="LOCAL" name="@localhost" uuid="5dd01979-7621-4392-a5f5-d4dcce8af941">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/epam_testtask</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -15,7 +15,7 @@
         <property name="yearIsDateType" value="false" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="epamtesttask" uuid="5ed6c1ab-6334-4113-9038-f57fe86ec178">
+    <data-source source="LOCAL" name="epamtesttask" uuid="1a2d0ac2-3bea-42cc-a509-bad2fa21b132">
       <driver-ref>hsqldb.local</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>

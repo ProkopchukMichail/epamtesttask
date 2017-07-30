@@ -29,8 +29,8 @@ public class Department extends HasId{
 
     @Override
     public String toString() {
-        return "Department{" +
-                ", departmentName='" + departmentName + '\'' +
+        return "Department{id='" +getId()+"',"+
+                " departmentName='" + departmentName + '\'' +
                 '}';
     }
 

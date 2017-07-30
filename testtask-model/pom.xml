@@ -11,8 +11,14 @@
 
     <artifactId>testtask-model</artifactId>
     <packaging>jar</packaging>
-    <name>testtask-model</name>
-
+    <name>restservice-model</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+    </dependencies>
     <properties>
         <maven.deploy.skip>true</maven.deploy.skip>
     </properties>
