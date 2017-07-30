@@ -41,4 +41,9 @@ public class AbstractEmployeeController {
         logger.debug("create employee "+employee);
         return employeeService.create(employee);
     }
+
+    public Integer getMidSalary(int id) {
+        logger.debug("get mid salary fo department "+id);
+        return employeeService.getMidSalary(id);
+    }
 }

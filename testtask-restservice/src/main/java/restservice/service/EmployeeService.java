@@ -15,4 +15,5 @@ public interface EmployeeService {
     boolean delete(int id);
     Employee create(Employee employee);
     Employee update(Employee employee);
+    Integer getMidSalary(int id);
 }

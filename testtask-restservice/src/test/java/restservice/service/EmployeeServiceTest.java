@@ -49,4 +49,9 @@ public class EmployeeServiceTest {
         employeeService.create(HR);
         Assert.assertEquals(employeeService.getAll(), EMPLOYEES);
     }
+
+    @Test
+    public void testGetMidSalary(){
+        Assert.assertEquals(employeeService.getMidSalary(1), Integer.valueOf(900));
+    }
 }

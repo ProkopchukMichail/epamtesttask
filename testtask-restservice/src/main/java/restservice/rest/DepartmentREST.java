@@ -24,7 +24,7 @@ public class DepartmentREST extends AbstractDepartmentController{
     public Department getDepartment(@PathVariable int id) {
         return super.get(id);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable int id) {
         return super.delete(id);
     }

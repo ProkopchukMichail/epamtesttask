@@ -14,4 +14,5 @@ public interface EmployeeDAO {
     Employee get(int id);
     boolean delete(int id);
     Employee save(Employee employee);
+    Integer getMidSalary(int id);
 }

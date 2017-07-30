@@ -18,13 +18,22 @@
         <th>
             Departments
         </th>
+        <th>
+            Salary
+        </th>
     </tr>
     </thead>
     <c:forEach items="${departments}" var="department">
-        <jsp:useBean id="department" scope="page" type="model.Department"/>
+        <jsp:useBean id="department" scope="page" type="webapplication.util.DepartmentWithSalary"/>
         <tr>
             <td>
                 ${department.departmentName}
+            </td>
+            <td>
+                ${department.salary}
+            </td>
+            <td>
+                <a href="departments/delete?id=${department.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>

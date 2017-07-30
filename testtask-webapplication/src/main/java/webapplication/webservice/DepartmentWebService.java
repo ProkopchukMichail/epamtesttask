@@ -27,4 +27,8 @@ public class DepartmentWebService {
     public Department get(int id){
         return restTemplate.getForObject(DEPARTMENT_REST_URL+"/"+id,Department.class);
     }
+
+    public void delete(int id){
+        restTemplate.delete(DEPARTMENT_REST_URL+"/delete/"+id);
+    }
 }

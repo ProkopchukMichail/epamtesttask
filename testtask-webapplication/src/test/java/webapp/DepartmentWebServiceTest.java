@@ -9,6 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import webapplication.webservice.DepartmentWebService;
 
+import java.util.Arrays;
+
 import static webapp.TestData.*;
 
 /**
@@ -29,5 +31,11 @@ public class DepartmentWebServiceTest {
     @Test
     public void testGet(){
         Assert.assertEquals(departmentWebService.get(1), ADMINISTRATION);
+    }
+
+    @Test
+    public void testDelete(){
+        departmentWebService.delete(4);
+        Assert.assertEquals(departmentWebService.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
     }
 }

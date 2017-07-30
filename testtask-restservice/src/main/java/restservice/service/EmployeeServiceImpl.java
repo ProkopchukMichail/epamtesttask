@@ -29,4 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee create(Employee employee){ return employeeDAO.save(employee);}
 
     public Employee update(Employee employee){return employeeDAO.save(employee);}
+
+    public Integer getMidSalary(int id) {
+        return employeeDAO.getMidSalary(id);
+    }
 }

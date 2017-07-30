@@ -21,6 +21,11 @@ public class EmployeeREST extends AbstractEmployeeController {
         return super.get(id);
     }
 
+    @GetMapping("/midsalary/{id}")
+    public Integer getMidSalary(@PathVariable int id){
+        return super.getMidSalary(id);
+    }
+
     @GetMapping
     public List<Employee> getAll() {
         return super.getAll();
