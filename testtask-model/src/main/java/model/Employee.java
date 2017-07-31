@@ -2,6 +2,11 @@ package model;
 
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import model.json.LocalDateTimeDeserializer;
+import model.json.LocalDateTimeSerializer;
+
 import java.time.LocalDateTime;
 
 /**
@@ -10,6 +15,8 @@ import java.time.LocalDateTime;
 public class Employee extends HasId{
     private Integer department_id;
     private String fullname;
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime birthday;
     private Integer salary;
 

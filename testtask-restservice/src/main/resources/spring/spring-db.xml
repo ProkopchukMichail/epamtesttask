@@ -33,12 +33,12 @@
     </mvc:annotation-driven>
 
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
-        <property name="formatters">
+       <!-- <property name="formatters">
             <set>
                 <bean class="restservice.util.DateTimeFormatters.LocalTimeFormatter"/>
                 <bean class="restservice.util.DateTimeFormatters.LocalDateFormatter"/>
             </set>
-        </property>
+        </property>-->
     </bean>
     <context:component-scan base-package="restservice"/>
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
