@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import restservice.dao.DepartmentDAO;
 
 import javax.sql.DataSource;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -70,5 +71,10 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
         } catch (DuplicateKeyException e) {
         }
         return department;
+    }
+
+    public String getDepartmentName(int department_id) {
+        return DataAccessUtils.singleResult(jdbcTemplate.query(
+                "SELECT * FROM departments WHERE department_id=?",ROW_MAPPER,department_id)).getDepartmentName();
     }
 }

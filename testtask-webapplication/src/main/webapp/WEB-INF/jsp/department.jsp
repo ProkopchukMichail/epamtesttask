@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>${department.id==null?'Create department':'Update department'}</title>
 </head>
 <body>
 <jsp:useBean id="department" scope="request" class="model.Department"/>

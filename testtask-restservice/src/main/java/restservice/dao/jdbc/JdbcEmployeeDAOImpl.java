@@ -41,11 +41,8 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
                 .usingGeneratedKeyColumns("id");
     }
 
-    public List<Employee> getAll() {
-        return jdbcTemplate.query("SELECT * FROM employees", ROW_MAPPER);
-    }
 
-    public List<Employee> getAllByDepartments(int id){
+    public List<Employee> getAllByDepartment(int id){
         return jdbcTemplate.query(
                 "SELECT * FROM employees WHERE department_id=?",ROW_MAPPER,id);
     }
@@ -82,7 +79,7 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
     }
 
     public Integer getMidSalary(int id) {
-        List<Employee> salaries = getAllByDepartments(id);
+        List<Employee> salaries = getAllByDepartment(id);
         if(salaries.size()==0) return 0;
         Integer midsalary=0;
         for(Employee s: salaries) midsalary+=s.getSalary();

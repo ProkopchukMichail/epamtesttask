@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface EmployeeDAO {
 
-    List<Employee> getAll();
+    List<Employee> getAllByDepartment(int id);
     Employee get(int id);
     boolean delete(int id);
     Employee save(Employee employee);

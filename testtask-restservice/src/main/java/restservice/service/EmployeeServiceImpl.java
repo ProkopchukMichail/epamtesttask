@@ -20,7 +20,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeDAO = employeeDAO;
     }
 
-    public List<Employee> getAll(){return employeeDAO.getAll();}
+    public List<Employee> getAllByDepartment(int id){return employeeDAO.getAllByDepartment(id);}
 
     public Employee get(int id){return employeeDAO.get(id);}
 

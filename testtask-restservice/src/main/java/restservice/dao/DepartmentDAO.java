@@ -13,4 +13,5 @@ public interface DepartmentDAO {
     Department get(int id);
     boolean delete(int id);
     Department save(Department department);
+    String getDepartmentName(int department_id);
 }

@@ -13,4 +13,6 @@ public interface DepartmentService {
     boolean delete(int id);
     Department create(Department department);
     Department update(Department department);
+
+    String getDepartmentName(int department_id);
 }

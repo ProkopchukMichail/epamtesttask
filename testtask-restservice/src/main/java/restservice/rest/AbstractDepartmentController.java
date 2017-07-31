@@ -41,4 +41,9 @@ public abstract class AbstractDepartmentController {
         logger.debug("update department "+department.getId());
         return departmentService.update(department);
     }
+
+    public String getDepartmentName(int department_id) {
+        logger.debug("get name for department "+department_id);
+        return departmentService.getDepartmentName(department_id);
+    }
 }

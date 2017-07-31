@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by comp on 26.07.2017.
  */
-public class AbstractEmployeeController {
+public abstract class AbstractEmployeeController {
 
     private final Logger logger=Logger.getLogger(getClass());
 
@@ -22,9 +22,9 @@ public class AbstractEmployeeController {
         return employeeService.get(id);
     }
 
-    public List<Employee> getAll(){
-        logger.debug("get all employees");
-        return employeeService.getAll();
+    public List<Employee> getAllByDepartment(int id){
+        logger.debug("get all employees by department "+id);
+        return employeeService.getAllByDepartment(id);
     }
 
     public boolean delete(int id){

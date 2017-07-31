@@ -1,6 +1,7 @@
 package restservice.rest;
 
 import model.Employee;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,24 +12,24 @@ import static restservice.rest.EmployeeREST.EMPLOYE_REST_URL;
  * Created by comp on 25.07.2017.
  */
 @RestController
-@RequestMapping(value = EMPLOYE_REST_URL)
+@RequestMapping(value = EMPLOYE_REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class EmployeeREST extends AbstractEmployeeController {
 
-    static final String EMPLOYE_REST_URL = "/rest/employees";
+    static final String EMPLOYE_REST_URL = "/rest";
 
     @GetMapping("/{id}")
     public Employee get(@PathVariable int id) {
         return super.get(id);
     }
 
-    @GetMapping("/midsalary/{id}")
+    @GetMapping("/employees/midsalary/{id}")
     public Integer getMidSalary(@PathVariable int id){
         return super.getMidSalary(id);
     }
 
-    @GetMapping
-    public List<Employee> getAll() {
-        return super.getAll();
+    @GetMapping("/employees/{department_id}")
+    public List<Employee> getAllByDepartment(@PathVariable int department_id) {
+        return super.getAllByDepartment(department_id);
     }
 
     @DeleteMapping("/{id}")

@@ -40,4 +40,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department update(Department department) {
         return departmentDAO.save(department);
     }
+
+    public String getDepartmentName(int department_id) {
+        return departmentDAO.getDepartmentName(department_id);
+    }
 }

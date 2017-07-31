@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import webapplication.webservice.DepartmentWebService;
+import webapplication.webservice.DepartmentWebServiceImpl;
 
 import java.util.Arrays;
 
@@ -21,27 +21,27 @@ import static webapp.TestData.*;
 public class DepartmentWebServiceTest {
 
     @Autowired
-    private DepartmentWebService departmentWebService;
+    private DepartmentWebService departmentWebServiceImpl;
 
     @Test
     public void testGetAll(){
-        Assert.assertEquals(departmentWebService.getAll(), DEPARTMENTS);
+        Assert.assertEquals(departmentWebServiceImpl.getAll(), DEPARTMENTS);
     }
 
     @Test
     public void testGet(){
-        Assert.assertEquals(departmentWebService.get(1), ADMINISTRATION);
+        Assert.assertEquals(departmentWebServiceImpl.get(1), ADMINISTRATION);
     }
 
     @Test
     public void testDelete(){
-        departmentWebService.delete(4);
-        Assert.assertEquals(departmentWebService.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
+        departmentWebServiceImpl.delete(4);
+        Assert.assertEquals(departmentWebServiceImpl.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
     }
 
     @Test
     public void testUpdate(){
-        departmentWebService.update(HR_DEPARTMENT_FOR_UPDATE);
-        Assert.assertEquals(departmentWebService.getAll(), DEPARTMENTS_AFTER_UPDATE);
+        departmentWebServiceImpl.update(HR_DEPARTMENT_FOR_UPDATE);
+        Assert.assertEquals(departmentWebServiceImpl.getAll(), DEPARTMENTS_AFTER_UPDATE);
     }
 }

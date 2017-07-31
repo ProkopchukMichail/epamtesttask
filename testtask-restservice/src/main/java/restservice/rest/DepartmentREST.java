@@ -39,4 +39,9 @@ public class DepartmentREST extends AbstractDepartmentController{
          return super.update(department);
     }
 
+    @GetMapping("/name/{department_id}")
+    public String getDepartmentName(@PathVariable int department_id){
+        return super.getDepartmentName(department_id);
+    }
+
 }

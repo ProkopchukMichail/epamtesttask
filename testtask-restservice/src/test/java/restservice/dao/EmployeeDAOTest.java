@@ -21,10 +21,11 @@ import static restservice.TestData.*;
 public class EmployeeDAOTest {
     @Autowired
     private EmployeeDAO employeeDAO;
+  /*
 
     @Test
     public void testGetAll(){
-        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES);
+        Assert.assertEquals(employeeDAO.getAllByDepartment(), EMPLOYEES);
     }
 
     @Test
@@ -35,18 +36,24 @@ public class EmployeeDAOTest {
     @Test
     public void testDelete(){
         employeeDAO.delete(10);
-        Assert.assertEquals(employeeDAO.getAll(), Arrays.asList(ADMIN1, ADMIN2,DEV1,DEV2,FINANCIER));
+        Assert.assertEquals(employeeDAO.getAllByDepartment(), Arrays.asList(ADMIN1, ADMIN2,DEV1,DEV2,FINANCIER));
     }
 
     @Test
     public void testUpdate(){
         employeeDAO.save(HR_FOR_UPDATE);
-        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES_AFTER_UPDATE);
+        Assert.assertEquals(employeeDAO.getAllByDepartment(), EMPLOYEES_AFTER_UPDATE);
     }
 
     @Test
     public void testCreate(){
         employeeDAO.save(HR);
-        Assert.assertEquals(employeeDAO.getAll(), EMPLOYEES);
+        Assert.assertEquals(employeeDAO.getAllByDepartment(), EMPLOYEES);
+    }*/
+
+    @Test
+    public void testGetAllByDepartment(){
+        Assert.assertEquals(employeeDAO.getAllByDepartment(1),
+                Arrays.asList(ADMIN1,ADMIN2));
     }
 }

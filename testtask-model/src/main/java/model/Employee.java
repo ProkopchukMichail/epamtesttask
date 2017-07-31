@@ -1,5 +1,7 @@
 package model;
 
+
+
 import java.time.LocalDateTime;
 
 /**
@@ -44,6 +46,7 @@ public class Employee extends HasId{
     public void setFullname(String fullname) {
         this.fullname = fullname;
     }
+
 
     public LocalDateTime getBirthday() {
         return birthday;
