@@ -9,7 +9,16 @@ import java.util.List;
  */
 public interface EmployeeWebService {
 
+
     Integer getMidSalary(int id);
 
     List<Employee> getAllByDepartment(int department_id);
+
+    void delete(int id);
+
+    Employee get(int id);
+
+    void update(Employee employee);
+
+    void create(Employee employee);
 }

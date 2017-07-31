@@ -28,7 +28,7 @@
         <jsp:useBean id="department" scope="page" type="webapplication.util.DepartmentWithSalary"/>
         <tr>
             <td>
-                <a href="employees?department_id=${department.id}">${department.departmentName}</a>
+                <a href="departments/${department.id}/employees">${department.departmentName}</a>
             </td>
             <td>
                 ${department.salary}

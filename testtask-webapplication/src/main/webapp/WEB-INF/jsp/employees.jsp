@@ -12,6 +12,8 @@
     <title>Employees</title>
 </head>
 <body>
+<jsp:useBean id="employee" scope="application" type="model.Employee"/>
+<a href="departments/${employee.department_id}/employees/create">Create</a>
 <table>
     <thead>
     <tr>
@@ -27,7 +29,6 @@
     </tr>
     </thead>
     <c:forEach items="${employees}" var="employee">
-        <jsp:useBean id="employee" scope="page" type="model.Employee"/>
         <tr>
             <td>
                     ${employee.fullname}
@@ -36,10 +37,10 @@
                     ${employee.salary}
             </td>
             <td>
-                Delete
+                <a href="departments/${employee.department_id}/employees/${employee.id}/delete">Delete</a>
             </td>
             <td>
-                Update
+                <a href="departments/${employee.department_id}/employees/update?id=${employee.id}">Update</a>
             </td>
         </tr>
     </c:forEach>

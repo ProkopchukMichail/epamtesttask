@@ -17,7 +17,7 @@ public class EmployeeREST extends AbstractEmployeeController {
 
     static final String EMPLOYE_REST_URL = "/rest";
 
-    @GetMapping("/{id}")
+    @GetMapping("/employee/{id}")
     public Employee get(@PathVariable int id) {
         return super.get(id);
     }
@@ -32,18 +32,18 @@ public class EmployeeREST extends AbstractEmployeeController {
         return super.getAllByDepartment(department_id);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/employees/delete/{id}")
     public boolean delete(@PathVariable int id) {
         return super.delete(id);
     }
 
-    @PutMapping
-    public Employee update(Employee employee) {
+    @PutMapping("/employees/put")
+    public Employee update(@RequestBody Employee employee) {
         return super.update(employee);
     }
 
-    @PostMapping
-    public Employee create(Employee employee) {
+    @PostMapping("/employees/post")
+    public Employee create(@RequestBody Employee employee) {
         return super.create(employee);
     }
 }

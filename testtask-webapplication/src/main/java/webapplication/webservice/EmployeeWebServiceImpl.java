@@ -29,4 +29,24 @@ public class EmployeeWebServiceImpl implements EmployeeWebService{
         return Arrays.asList(restTemplate.getForObject(
                 EMPLOYE_REST_URL+"/employees/"+department_id,Employee[].class));
     }
+
+    public void delete(int id) {
+        restTemplate.delete(EMPLOYE_REST_URL+"/employees/delete/"+id);
+    }
+
+    public Employee get(int id) {
+        return restTemplate.getForObject(EMPLOYE_REST_URL+"/employee/"+id,Employee.class);
+    }
+
+    public void update(Employee employee) {
+        restTemplate.postForObject(
+                EMPLOYE_REST_URL+"/employees/post", employee, Employee.class
+        );
+    }
+
+    public void create(Employee employee) {
+        restTemplate.put(
+                EMPLOYE_REST_URL+"/employees/put",employee,Employee.class
+        );
+    }
 }
