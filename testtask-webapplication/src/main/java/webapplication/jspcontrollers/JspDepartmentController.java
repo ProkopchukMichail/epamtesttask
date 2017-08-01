@@ -29,10 +29,10 @@ public class JspDepartmentController {
     private EmployeeWebService employeeWebService;
 
 
-    @GetMapping
+    /*@GetMapping
     public String root() {
         return "index";
-    }
+    }*/
 
     @GetMapping("/departments")
     public String getAll(Model model) {

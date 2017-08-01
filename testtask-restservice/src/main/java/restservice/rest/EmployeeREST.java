@@ -37,12 +37,12 @@ public class EmployeeREST extends AbstractEmployeeController {
         return super.delete(id);
     }
 
-    @PutMapping("/employees/put")
+    @PutMapping(value = "/employees/put", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Employee update(@RequestBody Employee employee) {
         return super.update(employee);
     }
 
-    @PostMapping("/employees/post")
+    @PostMapping(value = "/employees/post", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Employee create(@RequestBody Employee employee) {
         return super.create(employee);
     }

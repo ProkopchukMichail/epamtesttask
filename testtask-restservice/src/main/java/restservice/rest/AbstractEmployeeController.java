@@ -39,6 +39,7 @@ public abstract class AbstractEmployeeController {
 
     public Employee create(Employee employee){
         logger.debug("create employee "+employee);
+        logger.warn(">>>>>>>>>>>>>>>>>>>>>>"+employee.toString());
         return employeeService.create(employee);
     }
 
