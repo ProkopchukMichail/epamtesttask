@@ -8,6 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static restservice.TestData.*;
@@ -54,6 +55,13 @@ public class EmployeeDAOTest {
     @Test
     public void testGetAllByDepartment(){
         Assert.assertEquals(employeeDAO.getAllByDepartment(1),
+                Arrays.asList(ADMIN1,ADMIN2));
+    }
+
+    @Test
+    public void getByDates(){
+        Assert.assertEquals(employeeDAO.getByDates(1, LocalDateTime.of(1000,1,1,0,0),
+                LocalDateTime.of(3000,1,1,0,0)),
                 Arrays.asList(ADMIN1,ADMIN2));
     }
 }

@@ -16,6 +16,37 @@
 <a href="employees/create">Create</a>
 <button onclick="window.history.back()">Cancel</button>
 <table>
+    <tr>
+        <td>
+            <form method="post" action="find">
+                <dl>
+                    <dt>Birthday</dt>
+                    <dd><input type="datetime" name="date"></dd>
+                </dl>
+                <button type="submit">Find</button>
+            </form>
+        </td>
+        <td>
+            <form method="post" action="between">
+                <dl>
+                    <dt>
+                        From date
+                    </dt>
+                    <dd><input type="datetime" name="start"></dd>
+                </dl>
+                <dl>
+                    <dt>
+                        To date
+                    </dt>
+                    <dd><input type="datetime" name="end"></dd>
+                </dl>
+                <button type="submit">Find</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<table>
     <thead>
     <tr>
         <th>

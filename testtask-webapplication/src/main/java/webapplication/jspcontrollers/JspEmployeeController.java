@@ -1,6 +1,8 @@
 package webapplication.jspcontrollers;
 
 import model.Employee;
+import model.json.DateTimeConverter;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 
 
 
@@ -25,6 +28,7 @@ public class JspEmployeeController {
 
     @Autowired
     EmployeeWebService employeeWebService;
+    private static final Logger logger=Logger.getLogger("JSPLOGGER");
 
     @GetMapping("/departments/{department_id}/employees")
     public String getAllByDepartment(@PathVariable int department_id, HttpServletRequest request, Model model){
@@ -44,7 +48,43 @@ public class JspEmployeeController {
         return "employee";
     }
 
+    @PostMapping("/departments/{department_id}/find")
+    public String getByDate(@PathVariable int department_id, HttpServletRequest request, Model model){
+        String date=request.getParameter("date");
+        LocalDateTime dateTime;
+        try{
+            dateTime= DateTimeConverter.convert(date);
+        } catch (RuntimeException e){
+            dateTime=LocalDateTime.now();
+        }
+        List<Employee> employees=employeeWebService.getByDate(department_id,dateTime);
+        model.addAttribute("employees", employees);
+        return "find";
+    }
 
+    @PostMapping("/departments/{department_id}/between")
+    public String getByDates(@PathVariable int department_id, HttpServletRequest request, Model model){
+        String start=request.getParameter("start");
+        String end=request.getParameter("end");
+        LocalDateTime startDate, endDate;
+        try{
+            startDate=DateTimeConverter.convert(start);
+        } catch (NumberFormatException e){
+            startDate=LocalDateTime.of(1,1,1,0,0);
+        } catch (DateTimeParseException d){
+            startDate=LocalDateTime.of(1,1,1,0,0);
+        }
+        try{
+            endDate=DateTimeConverter.convert(end);
+        } catch (NumberFormatException e){
+            endDate=LocalDateTime.of(3000,1,1,0,0);
+        } catch (DateTimeParseException d){
+            endDate=LocalDateTime.of(3000,1,1,0,0);
+        }
+        List<Employee> employees=employeeWebService.getByDates(department_id, startDate,endDate);
+        model.addAttribute("employees", employees);
+        return "between";
+    }
 
     @GetMapping("/departments/{department_id}/employees/create")
     public String create(Model model,@PathVariable int department_id) {
@@ -75,7 +115,7 @@ public class JspEmployeeController {
         }
         if (employee.getId() != null) employeeWebService.update(employee);
         else employeeWebService.create(employee);
-        return "redirect:/departments/"+employee.getDepartment_id()+"/employees";
+        return "redirect:/departments/"+department_id+"/employees";
     }
 
     private Integer getId(HttpServletRequest request) {

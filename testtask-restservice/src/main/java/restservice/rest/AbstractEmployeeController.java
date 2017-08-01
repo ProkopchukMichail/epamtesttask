@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import restservice.service.EmployeeService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -46,5 +47,15 @@ public abstract class AbstractEmployeeController {
     public Integer getMidSalary(int id) {
         logger.debug("get mid salary fo department "+id);
         return employeeService.getMidSalary(id);
+    }
+
+    public List<Employee> getByDate(int department_id, LocalDateTime dateTime) {
+        logger.debug("get by date "+dateTime);
+        return employeeService.getByDate(department_id,dateTime);
+    }
+
+    public List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate) {
+        logger.debug("get by dates "+startDate+':'+endDate);
+        return  employeeService.getByDates(department_id,startDate,endDate);
     }
 }

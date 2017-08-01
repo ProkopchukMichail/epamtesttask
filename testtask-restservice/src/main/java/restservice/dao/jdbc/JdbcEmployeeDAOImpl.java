@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import restservice.dao.EmployeeDAO;
 
 import javax.sql.DataSource;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -51,6 +52,15 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
         return DataAccessUtils.singleResult(
                 jdbcTemplate.query("SELECT * FROM employees WHERE id=?",ROW_MAPPER,id)
         );
+    }
+    public List<Employee> getByDate(int department_id, LocalDateTime dateTime){
+        return jdbcTemplate.query(
+                "SELECT * FROM employees WHERE department_id=? AND birthday=?",ROW_MAPPER,department_id,dateTime);
+    }
+
+    public List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate) {
+        return jdbcTemplate.query(
+                "SELECT * FROM employees WHERE department_id=? AND birthday BETWEEN ? AND ?",ROW_MAPPER,department_id,startDate,endDate);
     }
 
     @Transactional

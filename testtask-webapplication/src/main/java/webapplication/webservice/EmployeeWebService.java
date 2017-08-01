@@ -2,6 +2,7 @@ package webapplication.webservice;
 
 import model.Employee;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -21,4 +22,8 @@ public interface EmployeeWebService {
     void update(Employee employee);
 
     void create(Employee employee);
+
+    List<Employee> getByDate(int department_id,LocalDateTime dateTime);
+
+    List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate);
 }

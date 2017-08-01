@@ -3,10 +3,9 @@ package restservice.rest;
 import model.Employee;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import model.json.DateTimeConverter;
 
 import java.util.List;
-
-import static restservice.rest.DepartmentREST.REST_URL;
 
 /**
  * Created by comp on 25.07.2017.
@@ -28,6 +27,16 @@ public class EmployeeREST extends AbstractEmployeeController {
     @GetMapping("/{department_id}/employees")
     public List<Employee> getAllByDepartment(@PathVariable int department_id) {
         return super.getAllByDepartment(department_id);
+    }
+
+    @GetMapping("/{department_id}/employees/find/{date}")
+    public List<Employee> getByDate(@PathVariable int department_id, @PathVariable String date){
+        return super.getByDate(department_id, DateTimeConverter.convert(date));
+    }
+
+    @GetMapping("/{department_id}/employees/from/{startDate}/to/{endDate}")
+    public List<Employee> getByDates(@PathVariable int department_id, @PathVariable String startDate, @PathVariable String endDate){
+        return super.getByDates(department_id, DateTimeConverter.convert(startDate),DateTimeConverter.convert(endDate));
     }
 
     @DeleteMapping("/{department_id}/employees/{id}/delete")

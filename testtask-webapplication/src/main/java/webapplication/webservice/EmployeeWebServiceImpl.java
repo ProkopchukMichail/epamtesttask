@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,6 +51,17 @@ public class EmployeeWebServiceImpl implements EmployeeWebService{
         restTemplate.put(
                 EMPLOYE_REST_URL+'/'+employee.getDepartment_id()+"/employees/create",employee,Employee.class
         );
+    }
+
+    public List<Employee> getByDate(int department_id, LocalDateTime dateTime) {
+        return Arrays.asList(restTemplate.getForObject(
+                EMPLOYE_REST_URL+'/'+department_id+"/employees/find/"+dateTime, Employee[].class));
+
+    }
+
+    public List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate) {
+        return Arrays.asList(restTemplate.getForObject(
+                EMPLOYE_REST_URL+'/'+department_id+"/employees/from/"+startDate+"/to/"+endDate, Employee[].class));
     }
 }
 

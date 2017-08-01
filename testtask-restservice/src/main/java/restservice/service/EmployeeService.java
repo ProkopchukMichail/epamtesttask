@@ -3,6 +3,7 @@ package restservice.service;
 
 import model.Employee;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -16,4 +17,8 @@ public interface EmployeeService {
     Employee create(Employee employee);
     Employee update(Employee employee);
     Integer getMidSalary(int id);
+
+    List<Employee> getByDate(int department_id, LocalDateTime dateTime);
+
+    List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate);
 }

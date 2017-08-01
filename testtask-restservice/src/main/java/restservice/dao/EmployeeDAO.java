@@ -3,6 +3,7 @@ package restservice.dao;
 
 import model.Employee;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -15,4 +16,8 @@ public interface EmployeeDAO {
     boolean delete(int id);
     Employee save(Employee employee);
     Integer getMidSalary(int id);
+
+    List<Employee> getByDate(int department_id, LocalDateTime dateTime);
+
+    List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate);
 }

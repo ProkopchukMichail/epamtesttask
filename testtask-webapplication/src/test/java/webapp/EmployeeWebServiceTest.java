@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import webapplication.webservice.EmployeeWebService;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static webapp.TestData.*;
@@ -24,6 +25,12 @@ public class EmployeeWebServiceTest {
     @Test
     public void testGetAllByDepartment(){
         Assert.assertEquals(employeeWebService.getAllByDepartment(1),
+                Arrays.asList(ADMIN1,ADMIN2));
+    }
+
+    @Test
+    public void testGetByDates(){
+        Assert.assertEquals(employeeWebService.getByDates(1, LocalDateTime.MIN,LocalDateTime.MAX),
                 Arrays.asList(ADMIN1,ADMIN2));
     }
 

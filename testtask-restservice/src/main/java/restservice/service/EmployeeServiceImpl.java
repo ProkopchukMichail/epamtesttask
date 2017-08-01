@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restservice.dao.EmployeeDAO;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -32,5 +33,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     public Integer getMidSalary(int id) {
         return employeeDAO.getMidSalary(id);
+    }
+
+    public List<Employee> getByDate(int department_id, LocalDateTime dateTime) {
+        return employeeDAO.getByDate(department_id,dateTime);
+    }
+
+    public List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate) {
+        return employeeDAO.getByDates(department_id,startDate,endDate);
     }
 }
