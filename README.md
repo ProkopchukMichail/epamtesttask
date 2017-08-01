@@ -1,4 +1,4 @@
-#                                                               EPAM test 
+#                                                               EPAM test task 
 
   This is multimodule java project, consist of 3 module: rest service, web application and model. Rest service and web application include model as dependency injection (maven build jar file from there). Programm implements the work with departments and employees.
   
