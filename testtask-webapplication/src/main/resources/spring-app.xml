@@ -13,11 +13,7 @@
             </bean>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/plain;charset=UTF-8</value>
-                        <value>text/html;charset=UTF-8</value>
-                        <value>application/json;charset=UTF-8</value>
-                    </list>
+                    <value>application/json;charset=UTF-8</value>
                 </property>
             </bean>
         </mvc:message-converters>
@@ -28,14 +24,14 @@
     <context:component-scan base-package="webapplication"/>
     <bean id="jsonConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-        <property name="supportedMediaTypes" value="application/json" />
+        <property name="supportedMediaTypes" value="application/json"/>
     </bean>
 
     <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
-                <ref bean="jsonConverter" />
+                <ref bean="jsonConverter"/>
             </list>
         </property>
     </bean>
