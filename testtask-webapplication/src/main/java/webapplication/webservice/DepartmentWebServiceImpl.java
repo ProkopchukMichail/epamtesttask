@@ -30,18 +30,18 @@ public class DepartmentWebServiceImpl implements DepartmentWebService{
     }
 
     public void delete(int id){
-        restTemplate.delete(DEPARTMENT_REST_URL+"/delete/"+id);
+        restTemplate.delete(DEPARTMENT_REST_URL+'/'+id+"/delete");
     }
 
     public void update(Department department){
-        restTemplate.postForObject(DEPARTMENT_REST_URL+"/post",department,Department.class);
+        restTemplate.postForObject(DEPARTMENT_REST_URL+'/'+department.getId()+"/update",department,Department.class);
     }
 
     public void create(Department department) {
-        restTemplate.put(DEPARTMENT_REST_URL+"/put", department, Department.class);
+        restTemplate.put(DEPARTMENT_REST_URL+"/create", department, Department.class);
     }
 
     public String getDepartmentName(int department_id) {
-        return restTemplate.getForObject(DEPARTMENT_REST_URL+"/name/"+department_id,String.class);
+        return restTemplate.getForObject(DEPARTMENT_REST_URL+'/'+department_id+"/name/",String.class);
     }
 }

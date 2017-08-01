@@ -24,22 +24,22 @@ public class DepartmentREST extends AbstractDepartmentController{
     public Department getDepartment(@PathVariable int id) {
         return super.get(id);
     }
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}/delete")
     public boolean delete(@PathVariable int id) {
         return super.delete(id);
     }
 
-    @PutMapping(value = "/put", consumes = APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/create", consumes = APPLICATION_JSON_VALUE)
     public Department create(@RequestBody Department department) {
         return super.create(department);
     }
 
-    @PostMapping(value = "/post", consumes = APPLICATION_JSON_VALUE)
-    public Department update(@RequestBody Department department) {
+    @PostMapping(value = "/{id}/update", consumes = APPLICATION_JSON_VALUE)
+    public Department update(@RequestBody Department department, @PathVariable int id) {
          return super.update(department);
     }
 
-    @GetMapping("/name/{department_id}")
+    @GetMapping("/{department_id}/name")
     public String getDepartmentName(@PathVariable int department_id){
         return super.getDepartmentName(department_id);
     }
