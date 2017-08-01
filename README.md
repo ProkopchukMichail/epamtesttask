@@ -16,36 +16,36 @@ mvn install -DskipTests (Junit tests don't work because project uses MySQL for d
 # Deploy:
 run deploy.bat
 
-# URL:
+# URL example:
 # Web:
 Departments: 
 get all http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments
 create http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/create
-update http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/update?id=?
-delete http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/delete?id=?
+update http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/update?id=1
+delete http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/delete?id=1
 Employees:
-get all for department: http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/employees?id=?
-create http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/employees/create
-update http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/employees/update?id=?
-delete http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/employees/delete?id=?
-find by date http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/find?date=?
-find between dates http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/between?start=?&end=?
+get all for department: http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/2/employees
+create http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/2/employees/create
+update http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/2/employees/update?id=3
+delete http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/?/employees/delete?id=3
+find by date http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/2/find
+find between dates http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments/2/between
 
 # REST
 Departments:
-get by id http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}
+get by id http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1
 get all http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments
 create http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/create
-update http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/update
-delete http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/delete
+update http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/update
+delete http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/delete
 Employees:
-get by id http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employe/{?}
-get all for department: http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees
-create http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees/create
-update http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees/update
-delete http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees/{id}/delete
-find by date http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees/find/{?}
-find between dates http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/{?}/employees/from/{?}/to/{?}
+get by id http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employe/1
+get all for department: http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees
+create http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees/create
+update http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees/update
+delete http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees/{id}/delete
+find by date http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees/find/{?}
+find between dates http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments/1/employees/from/1900-01-01T00:00/to/2000-01-01T00:00
 
 
 
