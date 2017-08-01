@@ -34,7 +34,7 @@ public class TestData {
             of(1985,Month.JUNE,6,0,0),550);
     public static final Employee HR=new Employee(4,"hr",
             of(1992,Month.SEPTEMBER,9,0,0),600);
-    public static final Employee HR_FOR_UPDATE=new Employee(10,4, "hr_update",
+    public static final Employee HR_FOR_UPDATE=new Employee(6,4, "hr_update",
             of(1992,Month.SEPTEMBER,9,0,0),600);
 
     public static final List<Employee> EMPLOYEES =Arrays.asList(ADMIN1,ADMIN2,DEV1,DEV2,FINANCIER,HR);

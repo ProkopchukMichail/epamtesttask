@@ -14,9 +14,9 @@ public interface EmployeeWebService {
 
     List<Employee> getAllByDepartment(int department_id);
 
-    void delete(int id);
+    void delete(int department_id,int id);
 
-    Employee get(int id);
+    Employee get(int department_id,int id);
 
     void update(Employee employee);
 

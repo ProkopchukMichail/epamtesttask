@@ -8,51 +8,43 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import webapplication.webservice.EmployeeWebService;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
-import java.util.logging.Logger;
 
-import static webapplication.jspcontrollers.JspEmployeeController.EMPLOYEE_MAPPING_JSP;
+
+
 /**
  * Created by comp on 31.07.2017.
  */
 @Controller
-@RequestMapping(value = EMPLOYEE_MAPPING_JSP)
 public class JspEmployeeController {
-    static final String EMPLOYEE_MAPPING_JSP ="/departments";
 
     @Autowired
     EmployeeWebService employeeWebService;
 
-    private final static Logger logger=Logger.getLogger("model");
-
-
-    @GetMapping("/{department_id}/employees")
+    @GetMapping("/departments/{department_id}/employees")
     public String getAllByDepartment(@PathVariable int department_id, HttpServletRequest request, Model model){
-        logger.warning(">>>>>>>>>>>>>>>>>>>>>>>>>>>>"+department_id);
         model.addAttribute("employees",employeeWebService.getAllByDepartment(department_id));
         return "employees";
     }
 
-    @GetMapping("/{department_id}/employees/{id}/delete")
+    @GetMapping("/departments/{department_id}/employees/{id}/delete")
     public String delete(@PathVariable int department_id,@PathVariable int id){
-        employeeWebService.delete(id);
+        employeeWebService.delete(department_id,id);
         return "redirect:/departments/"+department_id+"/employees";
     }
 
-    @GetMapping("/{department_id}/employees/update")
+    @GetMapping("/departments/{department_id}/employees/update")
     public String update(Model model,@PathVariable int department_id, HttpServletRequest request) {
-        model.addAttribute("employee", employeeWebService.get(getId(request)));
-        /*model.addAttribute("employee", employeeWebService.get(id));*/
+        model.addAttribute("employee", employeeWebService.get(department_id,getId(request)));
         return "employee";
     }
 
-    @GetMapping("/{department_id}/employees/create")
+    @GetMapping("/departments/{department_id}/employees/create")
     public String create(Model model,@PathVariable int department_id) {
         Employee employee=new Employee();
         employee.setDepartment_id(department_id);
@@ -60,7 +52,7 @@ public class JspEmployeeController {
         return "employee";
     }
 
-    @PostMapping(value = "/{department_id}/employees/postemployee", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/departments/{department_id}/employees/postemployee", produces = MediaType.APPLICATION_JSON_VALUE)
     public String createOrUpadate(@PathVariable int department_id,HttpServletRequest request) {
         Employee employee=new Employee();
         if(getId(request)!=null) employee.setId(getId(request));

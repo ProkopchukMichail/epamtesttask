@@ -26,4 +26,17 @@ public class EmployeeWebServiceTest {
         Assert.assertEquals(employeeWebService.getAllByDepartment(1),
                 Arrays.asList(ADMIN1,ADMIN2));
     }
+
+
+    @Test
+    public void testDelete(){
+        employeeWebService.delete(1,1);
+        Assert.assertEquals(employeeWebService.getAllByDepartment(1),Arrays.asList(TestData.ADMIN2));
+    }
+
+    @Test
+    public void testUpdate(){
+        employeeWebService.update(HR_FOR_UPDATE);
+        Assert.assertEquals(employeeWebService.getAllByDepartment(4),Arrays.asList(HR_FOR_UPDATE));
+    }
 }

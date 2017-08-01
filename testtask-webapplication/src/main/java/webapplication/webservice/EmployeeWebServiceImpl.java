@@ -16,7 +16,7 @@ import java.util.List;
 public class EmployeeWebServiceImpl implements EmployeeWebService{
 
     private final static String EMPLOYE_REST_URL=
-            "http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments";
+            "http://localhost:8080/testtask-restservice-1.0-SNAPSHOT//rest/departments";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -30,13 +30,14 @@ public class EmployeeWebServiceImpl implements EmployeeWebService{
                 EMPLOYE_REST_URL+'/'+department_id+"/employees",Employee[].class));
     }
 
-    public void delete(int id) {
-        restTemplate.delete(EMPLOYE_REST_URL+'/'+id+"/employees/delete");
+    public void delete(int department_id,int id) {
+        restTemplate.delete(
+                EMPLOYE_REST_URL+'/'+department_id+"/employees/"+id+"/delete");
     }
 
-    public Employee get(int id) {
+    public Employee get(int department_id,int id) {
         return restTemplate.getForObject(
-                EMPLOYE_REST_URL+"/employee/"+id,Employee.class);
+                EMPLOYE_REST_URL+'/'+department_id+"/employee/"+id,Employee.class);
     }
 
     public void update(Employee employee) {
