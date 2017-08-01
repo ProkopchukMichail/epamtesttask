@@ -8,6 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static restservice.TestData.*;
@@ -21,7 +22,19 @@ import static restservice.TestData.*;
 public class EmployeeServiceTest {
     @Autowired
     private EmployeeService employeeService;
-/*
+
+    @Test
+    public void testGetMidSalary(){
+        Assert.assertEquals(employeeService.getMidSalary(1), Integer.valueOf(1025));
+    }
+
+    @Test
+    public void getByDates(){
+        Assert.assertEquals(employeeService.getByDates(1, LocalDateTime.of(1000,1,1,0,0),
+                LocalDateTime.of(3000,1,1,0,0)),
+                Arrays.asList(ADMIN1,ADMIN2));
+    }
+
     @Test
     public void testGetAll(){
         Assert.assertEquals(employeeService.getAllByDepartment(1), EMPLOYEES);
@@ -34,24 +47,21 @@ public class EmployeeServiceTest {
 
     @Test
     public void testDelete(){
-        employeeService.delete(10);
-        Assert.assertEquals(employeeService.getAllByDepartment(), Arrays.asList(ADMIN1, ADMIN2,DEV1,DEV2,FINANCIER));
+        employeeService.delete(3);
+        Assert.assertEquals(employeeService.getAllByDepartment(2), Arrays.asList(DEV2));
     }
 
     @Test
     public void testUpdate(){
         employeeService.update(HR_FOR_UPDATE);
-        Assert.assertEquals(employeeService.getAllByDepartment(), EMPLOYEES_AFTER_UPDATE);
+        Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR_FOR_UPDATE));
     }
 
     @Test
     public void testCreate(){
         employeeService.create(HR);
-        Assert.assertEquals(employeeService.getAllByDepartment(), EMPLOYEES);
+        Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR));
     }
 
-    @Test
-    public void testGetMidSalary(){
-        Assert.assertEquals(employeeService.getMidSalary(1), Integer.valueOf(900));
-    }*/
+
 }

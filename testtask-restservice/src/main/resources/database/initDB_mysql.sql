@@ -19,7 +19,6 @@ CREATE TABLE employees
   fullname VARCHAR(45) NOT NULL,
   birthday DATE NOT NULL,
   salary INT(11) NOT NULL DEFAULT 500,
-/*  KEY FK_10000 (department),*/
   CONSTRAINT FK_1 FOREIGN KEY (department_id) REFERENCES departments(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 

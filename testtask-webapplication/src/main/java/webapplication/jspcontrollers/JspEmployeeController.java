@@ -1,7 +1,7 @@
 package webapplication.jspcontrollers;
 
 import model.Employee;
-import model.json.DateTimeConverter;
+import model.util.DateTimeConverter;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

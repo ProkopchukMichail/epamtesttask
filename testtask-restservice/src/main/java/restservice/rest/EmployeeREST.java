@@ -3,7 +3,7 @@ package restservice.rest;
 import model.Employee;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import model.json.DateTimeConverter;
+import model.util.DateTimeConverter;
 
 import java.util.List;
 

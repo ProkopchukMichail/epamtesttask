@@ -32,14 +32,8 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
-       <!-- <property name="formatters">
-            <set>
-                <bean class="restservice.util.DateTimeFormatters.LocalTimeFormatter"/>
-                <bean class="restservice.util.DateTimeFormatters.LocalDateFormatter"/>
-            </set>
-        </property>-->
-    </bean>
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService"/>
+
     <context:component-scan base-package="restservice"/>
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
         <jdbc:script location="classpath:database/${jdbc.initLocation}"/>
@@ -76,11 +70,4 @@
               p:password="${database.password}"/>
     </beans>
 
-
-
-    <!--    <bean
-                class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-            <property name="prefix" value="/WEB-INF/JSP/" />
-            <property name="suffix" value=".jsp" />
-        </bean>-->
 </beans>

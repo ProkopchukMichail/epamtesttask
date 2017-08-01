@@ -23,14 +23,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
-   <!--     <property name="formatters">
-            <set>
-                <bean class="webapplication.util.DateTimeFormatters.LocalDateFormatter"/>
-                <bean class="webapplication.util.DateTimeFormatters.LocalTimeFormatter"/>
-            </set>
-        </property>-->
-    </bean>
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService"/>
 
     <context:component-scan base-package="webapplication"/>
     <bean id="jsonConverter"

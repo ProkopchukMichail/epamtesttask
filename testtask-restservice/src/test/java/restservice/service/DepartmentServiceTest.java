@@ -17,7 +17,7 @@ import static restservice.TestData.*;
  */
 @ContextConfiguration("classpath:spring/spring-db.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("mysql")
+@ActiveProfiles("hsql")
 public class DepartmentServiceTest {
     @Autowired
     private DepartmentService departmentService;

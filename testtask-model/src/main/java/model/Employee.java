@@ -4,8 +4,8 @@ package model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import model.json.LocalDateTimeDeserializer;
-import model.json.LocalDateTimeSerializer;
+import model.util.LocalDateTimeDeserializer;
+import model.util.LocalDateTimeSerializer;
 
 import java.time.LocalDateTime;
 

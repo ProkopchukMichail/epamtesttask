@@ -1,4 +1,4 @@
-package model.json;
+package model.util;
 
 import java.time.LocalDateTime;
 
