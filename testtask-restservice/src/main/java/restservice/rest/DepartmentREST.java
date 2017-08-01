@@ -10,10 +10,10 @@ import static org.springframework.http.MediaType.*;
  * Created by comp on 23.07.2017.
  */
 @RestController()
-@RequestMapping(value = DepartmentREST.DEPARTMENT_REST_URL, produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = DepartmentREST.REST_URL, produces = APPLICATION_JSON_VALUE)
 public class DepartmentREST extends AbstractDepartmentController{
 
-    static final String DEPARTMENT_REST_URL = "/rest/departments";
+    static final String REST_URL = "/rest/departments";
 
     @GetMapping
     public List<Department> getAll() {

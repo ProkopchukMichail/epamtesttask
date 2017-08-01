@@ -16,37 +16,38 @@ import java.util.List;
 public class EmployeeWebServiceImpl implements EmployeeWebService{
 
     private final static String EMPLOYE_REST_URL=
-            "http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest";
+            "http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments";
 
     @Autowired
     private RestTemplate restTemplate;
 
     public Integer getMidSalary(int id){
-        return restTemplate.getForObject(EMPLOYE_REST_URL+"/employees/midsalary/"+id, Integer.class);
+        return restTemplate.getForObject(EMPLOYE_REST_URL+'/'+id+"/employees/midsalary", Integer.class);
     }
 
     public List<Employee> getAllByDepartment(int department_id) {
         return Arrays.asList(restTemplate.getForObject(
-                EMPLOYE_REST_URL+"/employees/"+department_id,Employee[].class));
+                EMPLOYE_REST_URL+'/'+department_id+"/employees",Employee[].class));
     }
 
     public void delete(int id) {
-        restTemplate.delete(EMPLOYE_REST_URL+"/employees/delete/"+id);
+        restTemplate.delete(EMPLOYE_REST_URL+'/'+id+"/employees/delete");
     }
 
     public Employee get(int id) {
-        return restTemplate.getForObject(EMPLOYE_REST_URL+"/employee/"+id,Employee.class);
+        return restTemplate.getForObject(
+                EMPLOYE_REST_URL+"/employee/"+id,Employee.class);
     }
 
     public void update(Employee employee) {
         restTemplate.postForObject(
-                EMPLOYE_REST_URL+"/employees/post", employee, Employee.class
+                EMPLOYE_REST_URL+'/'+employee.getDepartment_id()+"/employees/update", employee, Employee.class
         );
     }
 
     public void create(Employee employee) {
         restTemplate.put(
-                EMPLOYE_REST_URL+"/employees/put",employee,Employee.class
+                EMPLOYE_REST_URL+'/'+employee.getDepartment_id()+"/employees/create",employee,Employee.class
         );
     }
 }
