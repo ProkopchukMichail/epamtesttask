@@ -17,7 +17,7 @@
     <input type="hidden" name="id" value="${employee.id==null? null:employee.id}">
     <input type="hidden" name="department_id" value="${employee.department_id}">
     <dl>
-        <dt>Full name (default name is Noname)</dt>
+        <dt>Full name</dt>
         <dd><input type="text" value="${employee.fullname}" name="fullname"></dd>
     </dl>
     <dl>

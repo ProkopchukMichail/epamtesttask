@@ -13,7 +13,8 @@
     <title>Employees</title>
 </head>
 <body>
-
+<a href="employees/create">Create</a>
+<button onclick="window.history.back()">Cancel</button>
 <table>
     <thead>
     <tr>
@@ -49,7 +50,5 @@
         </tr>
     </c:forEach>
 </table>
-<a href="employees/create">Create</a>
-
 </body>
 </html>

@@ -13,6 +13,7 @@
 </head>
 <body>
 <a href="departments/create">Create</a>
+<button onclick="window.history.back()">Cancel</button>
 <table>
     <thead>
     <tr>
@@ -31,7 +32,7 @@
                 <a href="departments/${department.id}/employees">${department.departmentName}</a>
             </td>
             <td>
-                ${department.salary}
+                    ${department.salary}
             </td>
             <td>
                 <a href="departments/delete?id=${department.id}">Delete</a>
