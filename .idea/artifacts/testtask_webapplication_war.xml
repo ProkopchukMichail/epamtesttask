@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="testtask-webapplication:war">
-    <output-path>$PROJECT_DIR$/testtask-webapplication/target</output-path>
-    <root id="archive" name="testtask-webapplication-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="testtask-webapplication:war exploded" />
-    </root>
-  </artifact>
-</component>
