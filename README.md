@@ -10,6 +10,10 @@ This is multimodule java project, consist of 3 module: rest service, web applica
   login:  root
   password:  password
   
+  scripts:
+  initialize: epamtesttask\testtask-restservice\src\main\resources\database\initDB_mysql
+  population: epamtesttask\testtask-restservice\src\main\resources\database\populateDB_mysql
+  
 # Maven build:
 mvn install -DskipTests (Junit tests don't work because project uses MySQL for deploy while tests use HSQL)
 
