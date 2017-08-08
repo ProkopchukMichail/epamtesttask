@@ -2,3 +2,8 @@
 *.iml
 logs/
 
+testtask-model/src/main/resources/
+testtask-model/src/test/
+testtask-model/target/
+testtask-restservice/target/
+testtask-webapplication/target/
