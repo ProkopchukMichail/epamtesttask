@@ -1,14 +1,14 @@
 # EPAM test task
 
-This is multimodule java project, consist of 3 module: rest service, web application and model. Rest service and web application include model as dependency injection (maven build jar file from there). Programm implements the work with departments and employees.
+This is multimodule java project, consist of 3 module: rest service, web application and model. Rest service and web application include model as dependency (maven build jar file from there). Program implements the work with departments and employees.
 
-# Instruments and tecnologies: Maven, Spring MVC, Spring jdbc, Jackson, Junit, Log4j, MySQL and HSQL.
+# Instruments and tecnologies:
+Maven, Spring MVC, Spring jdbc, Jackson, Junit, Log4j, MySQL and HSQL.
 
 # Build information
 
 # MySQL database:
-  login:  root
-  password:  password
+  login and password configuration in mysql.properties
   
   scripts:
   initialize: epamtesttask\testtask-restservice\src\main\resources\database\initDB_mysql
