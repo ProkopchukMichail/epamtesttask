@@ -1,6 +1,7 @@
 package restservice.dao;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface DepartmentDAO {
 
-    List<Department> getAll();
+    List<DepartmentWithSalary> getAll();
     Department get(int id);
     boolean delete(int id);
     Department save(Department department);

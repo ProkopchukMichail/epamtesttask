@@ -1,26 +1,23 @@
-package webapplication.util;
+package model.util;
+
+import model.HasId;
 
 /**
  * Created by comp on 30.07.2017.
  */
-public class DepartmentWithSalary {
-    private Integer id;
+public class DepartmentWithSalary extends HasId{
     private String departmentName;
     private Integer salary;
 
     public DepartmentWithSalary(Integer id, String departmentName, Integer salary) {
-        this.id = id;
+        super(id);
         this.departmentName = departmentName;
         this.salary = salary;
     }
 
-    public Integer getId() {
-        return id;
+    public DepartmentWithSalary() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getDepartmentName() {
         return departmentName;

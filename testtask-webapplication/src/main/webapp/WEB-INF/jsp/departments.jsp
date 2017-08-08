@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <c:forEach items="${departments}" var="department">
-        <jsp:useBean id="department" scope="page" type="webapplication.util.DepartmentWithSalary"/>
+        <jsp:useBean id="department" scope="page" type="model.util.DepartmentWithSalary"/>
         <tr>
             <td>
                 <a href="departments/${department.id}/employees">${department.departmentName}</a>

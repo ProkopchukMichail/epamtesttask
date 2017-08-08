@@ -4,8 +4,10 @@ package restservice;
 
 import model.Department;
 import model.Employee;
+import model.util.DepartmentWithSalary;
 
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,5 +44,6 @@ public class TestData {
     public static final List<Employee> EMPLOYEES =Arrays.asList(ADMIN1,ADMIN2,DEV1,DEV2,FINANCIER,HR);
     public static final List<Employee> EMPLOYEES_AFTER_UPDATE =Arrays.asList(ADMIN1,ADMIN2,DEV1,DEV2,FINANCIER,HR_FOR_UPDATE);
 
+    public final static List<DepartmentWithSalary> DEPARTMENT_WITH_SALARIES=Arrays.asList(new DepartmentWithSalary(1,"qwe",400));
 
 }

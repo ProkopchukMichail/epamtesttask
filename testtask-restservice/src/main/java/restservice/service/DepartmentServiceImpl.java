@@ -1,6 +1,7 @@
 package restservice.service;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import restservice.dao.DepartmentDAO;
@@ -21,8 +22,9 @@ public class DepartmentServiceImpl implements DepartmentService {
         this.departmentDAO=departmentDAO;
     }
 
-    public List<Department> getAll(){
-       return departmentDAO.getAll();
+
+    public List<DepartmentWithSalary> getAll() {
+        return departmentDAO.getAll();
     }
 
     public Department get(int id) {

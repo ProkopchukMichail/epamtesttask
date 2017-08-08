@@ -1,6 +1,7 @@
 package webapplication.webservice;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
  */
 public interface DepartmentWebService {
 
-    List<Department> getAll();
+    //List<Department> getAll();
+    List<DepartmentWithSalary> getAll();
     Department get(int id);
     void delete(int id);
     void update(Department department);

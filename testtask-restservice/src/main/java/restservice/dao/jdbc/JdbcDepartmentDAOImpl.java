@@ -1,6 +1,7 @@
 package restservice.dao.jdbc;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.support.DataAccessUtils;
@@ -26,6 +27,7 @@ import java.util.List;
 public class JdbcDepartmentDAOImpl implements DepartmentDAO {
 
     private final static RowMapper<Department> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Department.class);
+    private final static RowMapper<DepartmentWithSalary> ROW_MAPPER2 = BeanPropertyRowMapper.newInstance(DepartmentWithSalary.class);
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -44,8 +46,12 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
     }
 
 
-    public List<Department> getAll() {
-        return jdbcTemplate.query("SELECT * FROM departments ORDER BY departmentName", ROW_MAPPER);
+
+    public List<DepartmentWithSalary> getAll() {
+        return jdbcTemplate.query("SELECT d.id, d.departmentName, AVG(e.salary) AS salary " +
+                        "FROM departments d  LEFT JOIN employees e ON d.id=e.department_id" +
+                        " GROUP BY d.departmentName"
+                , ROW_MAPPER2);
     }
 
     public Department get(int id) {
@@ -62,7 +68,7 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
     public Department save(Department department) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(department);
         try {
-            if (department.getId()==0) {
+            if (department.getId() == 0) {
                 department.setId(insertDepartment.executeAndReturnKey(parameterSource).intValue());
 
             } else
@@ -75,6 +81,6 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
 
     public String getDepartmentName(int department_id) {
         return DataAccessUtils.singleResult(jdbcTemplate.query(
-                "SELECT * FROM departments WHERE department_id=?",ROW_MAPPER,department_id)).getDepartmentName();
+                "SELECT * FROM departments WHERE department_id=?", ROW_MAPPER, department_id)).getDepartmentName();
     }
 }

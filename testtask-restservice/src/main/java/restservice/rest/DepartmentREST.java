@@ -1,6 +1,7 @@
 package restservice.rest;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public class DepartmentREST extends AbstractDepartmentController{
     static final String REST_URL = "/rest/departments";
 
     @GetMapping
-    public List<Department> getAll() {
+    public List<DepartmentWithSalary> getAll() {
         return super.getAll();
     }
 

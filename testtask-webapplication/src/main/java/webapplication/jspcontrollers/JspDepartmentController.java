@@ -8,12 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import webapplication.util.DepartmentWithSalary;
 import webapplication.webservice.DepartmentWebService;
-import webapplication.webservice.EmployeeWebService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,20 +25,11 @@ public class JspDepartmentController {
     @Autowired
     private DepartmentWebService departmentWebService;
 
-    @Autowired
-    private EmployeeWebService employeeWebService;
-
     static final String DEPARTMENT_MAPPING_JSP="/departments";
 
     @GetMapping
     public String getAll(Model model) {
-        List<DepartmentWithSalary> departmentWithSalaries = new ArrayList<DepartmentWithSalary>();
-        for (Department d : departmentWebService.getAll()) {
-            Integer salary = employeeWebService.getMidSalary(d.getId());
-            departmentWithSalaries.add(new DepartmentWithSalary(
-                    d.getId(), d.getDepartmentName(), salary
-            ));
-        }
+        List<model.util.DepartmentWithSalary> departmentWithSalaries = departmentWebService.getAll();
         model.addAttribute("departments", departmentWithSalaries);
         return "departments";
     }

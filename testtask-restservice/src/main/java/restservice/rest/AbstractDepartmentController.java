@@ -1,6 +1,7 @@
 package restservice.rest;
 
 import model.Department;
+import model.util.DepartmentWithSalary;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import restservice.service.DepartmentService;
@@ -16,10 +17,13 @@ public abstract class AbstractDepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-
-    public List<Department> getAll(){
-        logger.debug("get all departments");
-        return departmentService.getAll();
+    public List<DepartmentWithSalary> getAll(){
+        List<DepartmentWithSalary> withSalaries=departmentService.getAll();
+        logger.debug("get all departments:");
+        for(DepartmentWithSalary d:withSalaries){
+            logger.debug(">>>>>"+d.getDepartmentName()+" "+d.getSalary() );
+        }
+        return withSalaries;
     }
 
     public Department get(int id){

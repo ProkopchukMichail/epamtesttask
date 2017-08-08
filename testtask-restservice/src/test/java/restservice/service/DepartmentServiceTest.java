@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import restservice.dao.DepartmentDAO;
 
 import java.util.Arrays;
 
@@ -21,10 +22,17 @@ import static restservice.TestData.*;
 public class DepartmentServiceTest {
     @Autowired
     private DepartmentService departmentService;
+    @Autowired
+    private DepartmentDAO departmentDAO;
 
     @Test
     public void testGetAll(){
         Assert.assertEquals(departmentService.getAll(), DEPARTMENTS);
+    }
+
+    @Test
+    public void testGetAllWithSalary(){
+        Assert.assertEquals(departmentDAO.getAllWithSalary(), DEPARTMENT_WITH_SALARIES);
     }
 
     @Test
