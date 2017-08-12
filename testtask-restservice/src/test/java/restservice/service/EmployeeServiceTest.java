@@ -29,6 +29,11 @@ public class EmployeeServiceTest {
     }
 
     @Test
+    public void testGetByDate(){
+        Assert.assertEquals(employeeService.getByDate(1, LocalDateTime.of(1970,05,05,0,0)),
+                Arrays.asList(ADMIN1));
+    }
+    @Test
     public void getByDates(){
         Assert.assertEquals(employeeService.getByDates(1, LocalDateTime.of(1000,1,1,0,0),
                 LocalDateTime.of(3000,1,1,0,0)),

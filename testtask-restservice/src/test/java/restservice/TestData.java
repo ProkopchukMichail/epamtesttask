@@ -20,7 +20,7 @@ public class TestData {
     public static final Department ADMINISTRATION=new Department("Administration");
     public static final Department IT=new Department("IT");
     public static final Department FINANCE=new Department("Finance");
-    public static final Department HR_DEPARTMENT =new Department("HR_DEPARTMENT");
+    public static final Department HR_DEPARTMENT =new Department(0,"HR_DEPARTMENT");
     public static final Department HR_DEPARTMENT_FOR_UPDATE=new Department(4,"HR_DEPARTMENT_UPDATE");
 
     public static final List<Department> DEPARTMENTS= Arrays.asList(ADMINISTRATION,FINANCE, HR_DEPARTMENT,IT);

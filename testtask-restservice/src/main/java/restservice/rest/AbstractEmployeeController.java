@@ -40,7 +40,8 @@ public abstract class AbstractEmployeeController {
 
     public Employee create(Employee employee){
         logger.debug("create employee "+employee);
-        logger.warn(">>>>>>>>>>>>>>>>>>>>>>"+employee.toString());
+        logger.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+employee.toString());
+        logger.warn(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+employee.getId());
         return employeeService.create(employee);
     }
 
@@ -50,7 +51,7 @@ public abstract class AbstractEmployeeController {
     }
 
     public List<Employee> getByDate(int department_id, LocalDateTime dateTime) {
-        logger.debug("get by date "+dateTime);
+        logger.debug(">>>>>>>>>>>>>>>>>>>get by date "+dateTime+"  "+department_id);
         return employeeService.getByDate(department_id,dateTime);
     }
 

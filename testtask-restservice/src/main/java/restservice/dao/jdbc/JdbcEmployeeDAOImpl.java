@@ -1,6 +1,7 @@
 package restservice.dao.jdbc;
 
 import model.Employee;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.dao.support.DataAccessUtils;
@@ -55,8 +56,11 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
     }
 
     public List<Employee> getByDate(int department_id, LocalDateTime dateTime){
-        return jdbcTemplate.query(
+        List<Employee> list= jdbcTemplate.query(
                 "SELECT * FROM employees WHERE department_id=? AND birthday=?",ROW_MAPPER,department_id,dateTime);
+        Logger logger=Logger.getLogger(getClass());
+        logger.warn("!!!!!!!!!!!!!!!!!!!"+list);
+        return list;
     }
 
     public List<Employee> getByDates(int department_id, LocalDateTime startDate, LocalDateTime endDate) {
@@ -73,7 +77,7 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
     public Employee save(Employee employee) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(employee);
         try {
-            if (employee.isNew()) {
+            if (employee.getId()==0) {
                 employee.setId(insertEmployee.executeAndReturnKey(parameterSource).intValue());
 
             } else

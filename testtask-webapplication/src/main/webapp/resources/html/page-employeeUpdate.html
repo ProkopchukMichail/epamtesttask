@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update employee</title>
+</head>
+<body>
+<form id="updateEmployeeForm">
+    <input type="hidden" value="" name="department_id">
+    <input type="hidden" value="" name="id">
+    <dl>
+        <dt>Full name:</dt>
+        <dd><input type="text" value="" name="fullname"></dd>
+    </dl>
+    <dl>
+        <dt>Birthday:</dt>
+        <dd> <input type="datetime" value="" name="birthday"></dd>
+    </dl>
+    <dl>
+        <dt>Salary:</dt>
+        <dd><input type="number" value="" name="salary"></dd>
+    </dl>
+    <button onclick=changeEmployee($('input[name="department_id"]').val(),$('input[name="id"]').val())>Update</button>
+    <button onclick=location.reload();>Cancel</button>
+</form>
+</body>
+</html>

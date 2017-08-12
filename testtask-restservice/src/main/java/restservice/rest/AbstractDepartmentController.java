@@ -37,7 +37,7 @@ public abstract class AbstractDepartmentController {
     }
 
     public Department create(Department department){
-        logger.debug("create new deaprtment"+department);
+        logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>create new department "+department);
         return departmentService.create(department);
     }
 

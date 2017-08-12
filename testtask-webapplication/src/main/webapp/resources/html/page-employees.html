@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+</head>
+<body>
+<table>
+    <td>
+        <form>
+            <dl>
+                <dt>Birthday: </dt>
+                <dd><input value="" type=text name="exactDate" id="exactDate"></dd>
+            </dl>
+          <!--  <button id="btn-employee-findByDate">Find by birthday</button>-->
+        </form>
+    </td>
+</table>
+<button id="btn-employee-create">Create employee</button>
+<table id="employeesTable">
+    <tr>
+        <th>Full name</th>
+        <th>Birthday</th>
+        <th>Salary</th>
+    </tr>
+    {{#employees}}
+    <tr>
+        <td>{{fullname}}</td>
+        <td>{{birthday}}</td>
+        <td>{{salary}}</td>
+        <th><a href="javascript:void(0)" data-id="{{id}}"  class="btn-employee-edit">Edit</a></th>
+        <th><a href="javascript:void(0)" data-id="{{id}}"  class="btn-employee-delete">Delete</a></th>
+    </tr>
+    {{/employees}}
+</table>
+<button onclick=location.reload();>Cancel</button>
+</body>
+</html>

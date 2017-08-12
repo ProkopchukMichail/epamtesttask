@@ -18,7 +18,7 @@ import static restservice.TestData.*;
  */
 @ContextConfiguration("classpath:spring/spring-db.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("hsql")
+@ActiveProfiles("mysql")
 public class DepartmentServiceTest {
     @Autowired
     private DepartmentService departmentService;
@@ -32,7 +32,7 @@ public class DepartmentServiceTest {
 
     @Test
     public void testGetAllWithSalary(){
-        Assert.assertEquals(departmentDAO.getAllWithSalary(), DEPARTMENT_WITH_SALARIES);
+        Assert.assertEquals(departmentDAO.getAll(), DEPARTMENT_WITH_SALARIES);
     }
 
     @Test

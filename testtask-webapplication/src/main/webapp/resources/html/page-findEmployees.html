@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find employee</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Full name</td>
+        <td>Birthday</td>
+        <td>Salary</td>
+    </tr>
+    {{#employees}}
+    <tr>
+        <td>{{fullname}}</td>
+        <td>{{birthday}}</td>
+        <td>{{salary}}</td>
+    </tr>
+    {{/employees}}
+</table>
+<button onclick=location.reload();>Cancel</button>
+</body>
+</html>

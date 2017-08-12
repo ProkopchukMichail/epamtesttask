@@ -1,0 +1,15 @@
+<button id="btn-department-create">Create department</button>
+<table>
+    <tr>
+        <td>Department</td>
+        <td>Middle salary</td>
+    </tr>
+    {{#departments}}
+    <tr>
+        <td><a href="javascript:void(0)" data-id="{{id}}" class="btn-department-employees">{{departmentName}}</a></td>
+        <td>{{salary}}</td>
+        <td><a href="javascript:void(0)" data-id="{{id}}" class="btn-department-edit">Edit</a></td>
+        <td><a href="javascript:void(0)" data-id="{{id}}" class="btn-department-delete">Delete</a></td>
+    </tr>
+    {{/departments}}
+</table>

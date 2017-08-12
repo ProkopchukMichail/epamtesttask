@@ -97,6 +97,7 @@ public class Employee extends HasId{
     @Override
     public String toString() {
         return "Employee{" +
+                "id="+getId()+
                 "department_id=" + department_id +
                 ", fullname='" + fullname + '\'' +
                 ", birthday=" + birthday +

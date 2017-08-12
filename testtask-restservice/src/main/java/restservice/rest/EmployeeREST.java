@@ -44,8 +44,8 @@ public class EmployeeREST extends AbstractEmployeeController {
         return super.delete(id);
     }
 
-    @PostMapping(value = "/{department_id}/employees/update", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Employee update(@PathVariable int department_id,@RequestBody Employee employee) {
+    @PostMapping(value = "/{department_id}/employee/{id}/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Employee update(@PathVariable int department_id, @PathVariable int id, @RequestBody Employee employee) {
         return super.update(employee);
     }
 
