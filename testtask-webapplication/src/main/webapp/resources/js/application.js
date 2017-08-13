@@ -31,7 +31,7 @@ function saveDepartment() {
         data: JSON.stringify(department),
         dataType: "json",
         contentType: "application/json",
-        success: reloadDepartmentsPage()
+        success: reloadDepartmentsPage
     });
 }
 
@@ -44,7 +44,7 @@ function changeDepartment(id) {
         data: JSON.stringify(department),
         dataType: "json",
         contentType: "application/json",
-        success: reloadDepartmentsPage()
+        success: reloadDepartmentsPage
     });
 }
 
@@ -54,7 +54,7 @@ function deleteDepartment() {
         $.ajax({
             url: API_PATH + "departments/" + departmentId + "/delete",
             type: "DELETE",
-            success: reloadDepartmentsPage()
+            success: reloadDepartmentsPage
         });
     })
 }
@@ -205,12 +205,10 @@ function loadEmployeesFindBetweenDatesPage(department_id, from, to, done) {
 
 function reloadDepartmentsPage() {
     loadDepartmentsPage(function () {
-        loadDepartmentsPage(function () {
-            createDepartment();
-            showEmployees();
-            updateDepartment();
-            deleteDepartment();
-        });
+        createDepartment();
+        showEmployees();
+        updateDepartment();
+        deleteDepartment();
     });
 }
 
