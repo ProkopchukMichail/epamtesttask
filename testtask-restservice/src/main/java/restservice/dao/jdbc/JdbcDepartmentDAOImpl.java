@@ -50,7 +50,7 @@ public class JdbcDepartmentDAOImpl implements DepartmentDAO {
     public List<DepartmentWithSalary> getAll() {
         return jdbcTemplate.query("SELECT d.id, d.departmentName, AVG(e.salary) AS salary " +
                         "FROM departments d  LEFT JOIN employees e ON d.id=e.department_id" +
-                        " GROUP BY d.departmentName"
+                        " GROUP BY d.id"
                 , ROW_MAPPER2);
     }
 

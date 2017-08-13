@@ -58,8 +58,6 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
     public List<Employee> getByDate(int department_id, LocalDateTime dateTime){
         List<Employee> list= jdbcTemplate.query(
                 "SELECT * FROM employees WHERE department_id=? AND birthday=?",ROW_MAPPER,department_id,dateTime);
-        Logger logger=Logger.getLogger(getClass());
-        logger.warn("!!!!!!!!!!!!!!!!!!!"+list);
         return list;
     }
 
