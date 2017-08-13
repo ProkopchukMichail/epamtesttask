@@ -22,7 +22,7 @@ run deploy.bat
 
 # URL example:
 # Web:
-http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/departments
+http://localhost:8080/testtask-webapplication-1.0-SNAPSHOT/
 
 # REST
  http://localhost:8080/testtask-restservice-1.0-SNAPSHOT/rest/departments
