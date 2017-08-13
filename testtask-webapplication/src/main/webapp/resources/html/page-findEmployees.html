@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Find employee</title>
-</head>
-<body>
 <table>
     <tr>
         <td>Full name</td>
@@ -19,6 +12,5 @@
     </tr>
     {{/employees}}
 </table>
-<button onclick=location.reload();>Cancel</button>
-</body>
-</html>
+<button type="button" onclick=reloadEmployeesPage($('input[name="department_id"]').val())>Cancel</button>
+

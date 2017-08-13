@@ -1,18 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update</title>
-</head>
-<body>
-<form id="updateDepartmentForm">
-    <input type="hidden" value="" name="updateDepartmentId">
-    <dl>
-        <dt>Department name:</dt>
-        <dd><input type="text" value="" name="departmentName"></dd>
-    </dl>
-    <button onclick=changeDepartment($('input[name="updateDepartmentId"]').val())>Update</button>
-    <button onclick=location.reload();>Cancel</button>
-</form>
-</body>
-</html>
+<input type="hidden" value="" name="updateDepartmentId">
+<dl>
+    <dt>Department name:</dt>
+    <dd><input type="text" value="" name="departmentName"></dd>
+</dl>
+<button type="button" onclick=changeDepartment($('input[name="updateDepartmentId"]').val())>Update</button>
+<button type="button" onclick=reloadDepartmentsPage()>Cancel</button>

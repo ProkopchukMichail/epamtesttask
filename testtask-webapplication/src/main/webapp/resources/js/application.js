@@ -1,7 +1,8 @@
+var API_PATH = "/testtask-restservice-1.0-SNAPSHOT/rest/";
 $(document).ready(function () {
 
     loadDepartmentsPage(function () {
-        $("#btn-department-create").click(createDepartment);
+        createDepartment();
         showEmployees();
         updateDepartment();
         deleteDepartment();
@@ -17,45 +18,44 @@ function updateDepartment() {
     });
 }
 function createDepartment() {
-    showDepartmentPageCreate()
+    $("#btn-department-create").click(function () {
+        showDepartmentPageCreate()
+    });
 }
 
 function saveDepartment() {
-    var department=new Object();
-    department.id=0;
-    department.departmentName=$('input[name="departmentName"]').val();
+    var department = {id: 0, departmentName: $('input[name="departmentName"]').val()};
     $.ajax({
-        url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/create",
+        url: API_PATH + "departments/create",
         type: "PUT",
         data: JSON.stringify(department),
-        dataType:"json",
+        dataType: "json",
         contentType: "application/json",
-        success: loadDepartmentsPage(location.reload())
-    })
+        success: reloadDepartmentsPage()
+    });
 }
 
+
 function changeDepartment(id) {
-    var department=new Object();
-    department.id=id;
-    department.departmentName=$('input[name="departmentName"]').val();
+    var department = {id: id, departmentName: $('input[name="departmentName"]').val()};
     $.ajax({
-        url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+id+"/update",
+        url: API_PATH + "departments/" + id + "/update",
         type: "POST",
         data: JSON.stringify(department),
-        dataType:"json",
+        dataType: "json",
         contentType: "application/json",
-        success: loadDepartmentsPage(location.reload())
-    })
+        success: reloadDepartmentsPage()
+    });
 }
 
 function deleteDepartment() {
     $(".btn-department-delete").click(function () {
         var departmentId = $(this).attr("data-id");
         $.ajax({
-            url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/" + departmentId + "/delete",
+            url: API_PATH + "departments/" + departmentId + "/delete",
             type: "DELETE",
-            success: location.reload(),
-        })
+            success: reloadDepartmentsPage()
+        });
     })
 }
 
@@ -67,6 +67,7 @@ function showEmployees() {
             createEmployee(departmentId);
             updateEmployee(departmentId);
             findByBirthday(departmentId);
+            findBetweenDates(departmentId);
         });
     })
 }
@@ -75,36 +76,37 @@ function deleteEmployees(departmentId) {
     $(".btn-employee-delete").click(function () {
         var employeeId = $(this).attr("data-id");
         $.ajax({
-            url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/" + departmentId +"/employees/"+employeeId+ "/delete",
+            url: API_PATH + "departments/" + departmentId + "/employees/" + employeeId + "/delete",
             type: "DELETE",
-            success: loadEmployeesPage(departmentId, location.reload())
-        })
+            success: reloadEmployeesPage(departmentId)
+        });
     })
 }
 
 function createEmployee(departmentId) {
     $("#btn-employee-create").click(function () {
-        showEmployeePageCreate( function () {
+        showEmployeePageCreate(function () {
             $('input[name="department_id"]').val(departmentId);
         })
     });
 }
 
 function saveEmployee(departmentId) {
-    var employee=new Object();
-    employee.department_id=departmentId;
-    employee.id=0;
-    employee.fullname=$('input[name="fullname"]').val();
-    employee.birthday=$('input[name="birthday"]').val();
-    employee.salary=$('input[name="salary"]').val();
+    var employee = {
+        department_id: departmentId,
+        id: 0,
+        fullname: $('input[name="fullname"]').val(),
+        birthday:$('input[name="birthday"]').val(),
+        salary: $('input[name="salary"]').val()
+    };
     $.ajax({
-        url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+departmentId+"/employees/create",
+        url: API_PATH + "departments/" + departmentId + "/employees/create",
         type: "PUT",
         data: JSON.stringify(employee),
-        dataType:"json",
+        dataType: "json",
         contentType: "application/json",
-        success: loadDepartmentsPage(location.reload())
-    })
+        success: reloadEmployeesPage(departmentId)
+    });
 }
 
 function updateEmployee(departmentId) {
@@ -118,66 +120,54 @@ function updateEmployee(departmentId) {
 }
 
 function changeEmployee(departmentId, id) {
-    var employee=new Object();
-    employee.department_id=departmentId;
-    employee.id=id;
-    employee.fullname=$('input[name="fullname"]').val();
-    employee.birthday=$('input[name="birthday"]').val();
-    employee.salary=$('input[name="salary"]').val();
+    var employee = {
+        department_id: departmentId,
+        id: id,
+        fullname: $('input[name="fullname"]').val(),
+        birthday:$('input[name="birthday"]').val(),
+        salary: $('input[name="salary"]').val()
+    };
     $.ajax({
-        url: "/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+departmentId+"/employee/"+id+"/update",
+        url: API_PATH + "departments/" + departmentId + "/employee/" + id + "/update",
         type: "POST",
         data: JSON.stringify(employee),
-        dataType:"json",
+        dataType: "json",
         contentType: "application/json",
-        success: loadDepartmentsPage(location.reload())
-    })
+        success: reloadEmployeesPage(departmentId)
+    });
 }
 
 function findByBirthday(department_id) {
-    $("#exactDate").on("input",function () {
-        /*var birthday=$('input[name="exactDate"]').val();
-         $.get("/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+department_id+"/employees/find/"+birthday, function (employees) {
-         showPage("resources/html/page-findEmployees.html", {employees:employees}, done);
-         })*/
-        var birthday=stringToDate($('input[name="exactDate"]').val());
-        $('#employeesTable tr').each(function () {
-                var row=$(this);
-            var date = stringToDate(row.find("td").eq(1).text());
-            var show = true;
-            if (date == birthday)
-                show = false;
-            if (show)
-                row.show();
-            else
-                row.hide();
-            }
-        )
-    })
-}
-function stringToDate(s) {
-    var ret = NaN;
-    var parts = s.split("T")[0].split("-");
-    var date=new Date({
-        year:parts[0],
-        month:parts[1],
-        day:parts[2]
+    $("#btn-employee-findByDate").click(function () {
+        var birthday = $('input[name="exactDate"]').val();
+        loadEmployeesFindByDatePage(department_id, birthday, function (employees) {
+            $(this).html(employees);
+        });
+
     });
-    if (!isNaN(date.getTime())) {
-        ret = date;
-    }
-    return ret;
 }
 
+function findBetweenDates(department_id) {
+    $("#btn-employee-findBetweenDates").click(function () {
+        var from = $('input[name="fromDate"]').val();
+        var to = $('input[name="toDate"]').val();
+        loadEmployeesFindBetweenDatesPage(department_id, from, to, function (employees) {
+            $(this).html(employees);
+        });
+
+    });
+}
+
+
 function loadDepartmentPageUpdate(id, done) {
-    $.get("/testtask-restservice-1.0-SNAPSHOT/rest/departments/" + id, function (department) {
-        showPage("resources/html/page-departmentUpdate.html", {department:department}, done)
+    $.get(API_PATH + "departments/" + id, function (department) {
+        showPage("resources/html/page-departmentUpdate.html", {department: department}, done)
     })
 }
 
 function loadEmployeePageUpdate(departmentId, id, done) {
-    $.get("/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+departmentId+"/employee/"+id, function (employee) {
-        showPage("resources/html/page-employeeUpdate.html", {employee:employee}, done)
+    $.get(API_PATH + "departments/" + departmentId + "/employee/" + id, function (employee) {
+        showPage("resources/html/page-employeeUpdate.html", {employee: employee}, done)
     })
 }
 function showDepartmentPageCreate(done) {
@@ -189,18 +179,52 @@ function showEmployeePageCreate(done) {
 }
 
 function loadDepartmentsPage(done) {
-    $.get("/testtask-restservice-1.0-SNAPSHOT/rest/departments", function (departments) {
+    $.get(API_PATH + "departments", function (departments) {
         showPage("resources/html/page-departments.html", {departments: departments}, done);
 
     });
 }
 
 function loadEmployeesPage(department_id, done) {
-    $.get("/testtask-restservice-1.0-SNAPSHOT/rest/departments/"+department_id+"/employees", function (employees) {
-        showPage("resources/html/page-employees.html", {employees:employees}, done);
+    $.get(API_PATH + "departments/" + department_id + "/employees", function (employees) {
+        showPage("resources/html/page-employees.html", {employees: employees}, done);
     })
 }
 
+function loadEmployeesFindByDatePage(department_id, birthday, done) {
+    $.get(API_PATH + "departments/" + department_id + "/employees/find/" + birthday, function (employees) {
+        showPage("resources/html/page-findEmployees.html", {employees: employees}, done);
+    });
+}
+
+function loadEmployeesFindBetweenDatesPage(department_id, from, to, done) {
+    $.get(API_PATH + "departments/" + department_id + "/employees/from/" + from + "/to/" + to, function (employees) {
+        showPage("resources/html/page-findEmployees.html", {employees: employees}, done);
+    });
+}
+
+function reloadDepartmentsPage() {
+    loadDepartmentsPage(function () {
+        loadDepartmentsPage(function () {
+            createDepartment();
+            showEmployees();
+            updateDepartment();
+            deleteDepartment();
+        });
+    });
+}
+
+function reloadEmployeesPage(departmentId) {
+    loadEmployeesPage(departmentId, function () {
+        loadEmployeesPage(departmentId, function () {
+            deleteEmployees(departmentId);
+            createEmployee(departmentId);
+            updateEmployee(departmentId);
+            findByBirthday(departmentId);
+            findBetweenDates(departmentId);
+        });
+    });
+}
 
 function showPage(pagePath, context, done) {
     $.get(pagePath, function (template) {

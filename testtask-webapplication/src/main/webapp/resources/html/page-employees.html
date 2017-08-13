@@ -1,21 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employees</title>
-</head>
-<body>
 <table>
-    <td>
-        <form>
-            <dl>
-                <dt>Birthday: </dt>
-                <dd><input value="" type=text name="exactDate" id="exactDate"></dd>
-            </dl>
-          <!--  <button id="btn-employee-findByDate">Find by birthday</button>-->
-        </form>
-    </td>
+    <tr>
+        <th>Birthday:</th>
+        <th>From date:</th>
+        <th>To date:</th>
+    </tr>
+    <tr>
+        <td><input value="" type=text name="exactDate"></td>
+        <td><input value="" type=text name="fromDate"></td>
+        <td><input value="" type=text name="toDate"></td>
+    </tr>
+    <tr>
+        <td><button type="button" id="btn-employee-findByDate">Find by birthday</button></td>
+        <td><button type="button" id="btn-employee-findBetweenDates">Find between dates</button></td>
+    </tr>
 </table>
+
 <button id="btn-employee-create">Create employee</button>
 <table id="employeesTable">
     <tr>
@@ -28,11 +27,10 @@
         <td>{{fullname}}</td>
         <td>{{birthday}}</td>
         <td>{{salary}}</td>
-        <th><a href="javascript:void(0)" data-id="{{id}}"  class="btn-employee-edit">Edit</a></th>
-        <th><a href="javascript:void(0)" data-id="{{id}}"  class="btn-employee-delete">Delete</a></th>
+        <th><button type="button" data-id="{{id}}" class="btn-employee-edit">Edit</button></th>
+        <th><button type="button" data-id="{{id}}" class="btn-employee-delete">Delete</button></th>
     </tr>
     {{/employees}}
 </table>
-<button onclick=location.reload();>Cancel</button>
-</body>
-</html>
+<button type="button" onclick=reloadDepartmentsPage()>Cancel</button>
+

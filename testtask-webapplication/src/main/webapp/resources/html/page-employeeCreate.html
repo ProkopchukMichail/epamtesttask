@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee create</title>
-</head>
-<body>
-<form id="createEmployeeForm">
-    <input type="hidden" value="" name="department_id">
-    <dl>
-        <dt>Full name:</dt>
-        <dd><input type="text" value="" name="fullname"></dd>
-    </dl>
-    <dl>
-        <dt>Birthday:</dt>
-        <dd> <input type="datetime" value="" name="birthday"></dd>
-    </dl>
-    <dl>
-        <dt>Salary:</dt>
-        <dd><input type="number" value="" name="salary"></dd>
-    </dl>
-    <button onclick=saveEmployee($('input[name="department_id"]').val())>Create</button>
-    <button onclick=location.reload();>Cancel</button>
-</form>
-</body>
-</html>
+<input type="hidden" value="" name="department_id">
+<dl>
+    <dt>Full name:</dt>
+    <dd><input type="text" value="" name="fullname"></dd>
+</dl>
+<dl>
+    <dt>Birthday:</dt>
+    <dd> <input type="datetime" value="" name="birthday"></dd>
+</dl>
+<dl>
+    <dt>Salary:</dt>
+    <dd><input type="number" value="" name="salary"></dd>
+</dl>
+<button type="button" onclick=saveEmployee($('input[name="department_id"]').val())>Create</button>
+<button type="button" onclick=reloadEmployeesPage($('input[name="department_id"]').val())>Cancel</button>
