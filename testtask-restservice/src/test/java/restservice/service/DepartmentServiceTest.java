@@ -27,11 +27,6 @@ public class DepartmentServiceTest {
 
     @Test
     public void testGetAll(){
-        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS);
-    }
-
-    @Test
-    public void testGetAllWithSalary(){
         Assert.assertEquals(departmentDAO.getAll(), DEPARTMENT_WITH_SALARIES);
     }
 
