@@ -42,30 +42,33 @@ public class EmployeeServiceTest {
     }
 
     @Test
-    public void testGetAll(){
-        Assert.assertEquals(employeeService.getAllByDepartment(1), EMPLOYEES);
+    public void testGetAllByDepartment(){
+        Assert.assertEquals(employeeService.getAllByDepartment(1),
+                Arrays.asList(ADMIN1,ADMIN2));
     }
 
     @Test
     public void testGet(){
-        Assert.assertEquals(employeeService.get(5),ADMIN1);
-    }
-
-    @Test
-    public void testDelete(){
-        employeeService.delete(3);
-        Assert.assertEquals(employeeService.getAllByDepartment(2), Arrays.asList(DEV2));
+        Assert.assertEquals(employeeService.get(5),FINANCIER);
     }
 
     @Test
     public void testUpdate(){
         employeeService.update(HR_FOR_UPDATE);
-        Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR_FOR_UPDATE));
+        Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList( HR2,HR_FOR_UPDATE));
     }
 
     @Test
-    public void testCreate(){
-        employeeService.create(HR);
+    public void testDelete(){
+        employeeService.delete(7);
         Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR));
+    }
+
+
+
+    @Test
+    public void testCreate(){
+        employeeService.create(HR2);
+        Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR, HR2));
     }
 }

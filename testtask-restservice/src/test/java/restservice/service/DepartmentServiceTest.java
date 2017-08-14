@@ -25,7 +25,7 @@ public class DepartmentServiceTest {
 
     @Test
     public void testGetAll(){
-        Assert.assertEquals(departmentService.getAll(), DEPARTMENT_WITH_SALARIES);
+        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS_WITH_SALARIES);
     }
 
     @Test
@@ -36,7 +36,7 @@ public class DepartmentServiceTest {
     @Test
     public void testUpdate(){
         departmentService.update(HR_DEPARTMENT_FOR_UPDATE);
-        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS_AFTER_UPDATE);
+        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS_AFTER_UPDATE_WITH_SALARIES);
     }
 
     @Test
@@ -48,6 +48,6 @@ public class DepartmentServiceTest {
     @Test
     public void testCreate(){
         departmentService.create(HR_DEPARTMENT);
-        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS);
+        Assert.assertEquals(departmentService.getAll(), DEPARTMENTS_WITH_SALARIES);
     }
 }

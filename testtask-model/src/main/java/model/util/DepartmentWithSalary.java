@@ -34,4 +34,13 @@ public class DepartmentWithSalary extends HasId{
     public void setSalary(Integer salary) {
         this.salary = salary;
     }
+
+    @Override
+    public String toString() {
+        return "DepartmentWithSalary{" +
+                "id="+getId()+
+                ", departmentName='" + departmentName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }

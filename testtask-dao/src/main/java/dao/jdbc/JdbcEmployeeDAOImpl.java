@@ -75,7 +75,7 @@ public class JdbcEmployeeDAOImpl implements EmployeeDAO {
     public Employee save(Employee employee) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(employee);
         try {
-            if (employee.getId()==0) {
+            if (employee.isNew() || employee.getId()==0) {
                 employee.setId(insertEmployee.executeAndReturnKey(parameterSource).intValue());
 
             } else

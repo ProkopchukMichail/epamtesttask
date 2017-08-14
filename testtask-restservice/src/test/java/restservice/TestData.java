@@ -23,8 +23,14 @@ public class TestData {
     public static final Department HR_DEPARTMENT =new Department(0,"HR_DEPARTMENT");
     public static final Department HR_DEPARTMENT_FOR_UPDATE=new Department(4,"HR_DEPARTMENT_UPDATE");
 
-    public static final List<Department> DEPARTMENTS= Arrays.asList(ADMINISTRATION,FINANCE, HR_DEPARTMENT,IT);
-    public static final List<Department> DEPARTMENTS_AFTER_UPDATE= Arrays.asList(ADMINISTRATION,FINANCE, HR_DEPARTMENT_FOR_UPDATE,IT);
+    public static final DepartmentWithSalary ADMINISTRATION_WITH_SALARY=new DepartmentWithSalary(1,"Administration",1025);
+    public static final DepartmentWithSalary IT_WITH_SALARY=new DepartmentWithSalary(2,"IT",1100);
+    public static final DepartmentWithSalary FINANCE_WITH_SALARY=new DepartmentWithSalary(3,"Finance",550);
+    public static final DepartmentWithSalary HR_DEPARTMENT_WITH_SALARY=new DepartmentWithSalary(4,"HR_DEPARTMENT",600);
+    public static final DepartmentWithSalary HR_DEPARTMENT_AFTER_UPDATE_WITH_SALARY=new DepartmentWithSalary(4,"HR_DEPARTMENT_UPDATE",600);
+
+    public static final List<DepartmentWithSalary> DEPARTMENTS_WITH_SALARIES= Arrays.asList(ADMINISTRATION_WITH_SALARY, IT_WITH_SALARY,FINANCE_WITH_SALARY, HR_DEPARTMENT_WITH_SALARY);
+    public static final List<DepartmentWithSalary> DEPARTMENTS_AFTER_UPDATE_WITH_SALARIES= Arrays.asList(ADMINISTRATION_WITH_SALARY, IT_WITH_SALARY,FINANCE_WITH_SALARY, HR_DEPARTMENT_AFTER_UPDATE_WITH_SALARY);
 
     public static final Employee ADMIN1=new Employee(1,"admin1",
             of(1970, Month.MAY,5,0,0),1000);
@@ -38,12 +44,13 @@ public class TestData {
             of(1985,Month.JUNE,6,0,0),550);
     public static final Employee HR=new Employee(4,"hr",
             of(1992,Month.SEPTEMBER,9,0,0),600);
-    public static final Employee HR_FOR_UPDATE=new Employee(10,4, "hr_update",
+    public static final Employee HR2=new Employee(4,"hr2",
+            of(1992,Month.SEPTEMBER,9,0,0),600);
+    public static final Employee HR_FOR_UPDATE=new Employee(6,4, "hr_update",
             of(1992,Month.SEPTEMBER,9,0,0),600);
 
     public static final List<Employee> EMPLOYEES =Arrays.asList(ADMIN1,ADMIN2,DEV1,DEV2,FINANCIER,HR);
     public static final List<Employee> EMPLOYEES_AFTER_UPDATE =Arrays.asList(ADMIN1,ADMIN2,DEV1,DEV2,FINANCIER,HR_FOR_UPDATE);
 
-    public final static List<DepartmentWithSalary> DEPARTMENT_WITH_SALARIES=Arrays.asList(new DepartmentWithSalary(1,"qwe",400));
 
 }
