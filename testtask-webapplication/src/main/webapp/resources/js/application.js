@@ -137,22 +137,22 @@ function changeEmployee(departmentId, id) {
     });
 }
 
-function findByBirthday(department_id) {
+function findByBirthday(departmentId) {
     $("#btn-employee-findByDate").click(function () {
         var birthday = $('input[name="exactDate"]').val();
-        loadEmployeesFindByDatePage(department_id, birthday, function (employees) {
-            $(this).html(employees);
+        loadEmployeesFindByDatePage(departmentId, birthday, function () {
+            $('input[name="department_id"]').val(departmentId);
         });
 
     });
 }
 
-function findBetweenDates(department_id) {
+function findBetweenDates(departmentId) {
     $("#btn-employee-findBetweenDates").click(function () {
         var from = $('input[name="fromDate"]').val();
         var to = $('input[name="toDate"]').val();
-        loadEmployeesFindBetweenDatesPage(department_id, from, to, function (employees) {
-            $(this).html(employees);
+        loadEmployeesFindBetweenDatesPage(departmentId, from, to, function () {
+            $('input[name="department_id"]').val(departmentId);
         });
 
     });

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import service.EmployeeService;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -67,6 +68,4 @@ public class EmployeeServiceTest {
         employeeService.create(HR);
         Assert.assertEquals(employeeService.getAllByDepartment(4), Arrays.asList(HR));
     }
-
-
 }

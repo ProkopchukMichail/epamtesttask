@@ -30,7 +30,10 @@
 
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService"/>
 
+    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="service"/>
     <context:component-scan base-package="restservice"/>
+
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
         <jdbc:script location="classpath:database/${jdbc.initLocation}"/>
         <jdbc:script encoding="utf-8" location="classpath:database/${jdbc.populateLocation}"/>

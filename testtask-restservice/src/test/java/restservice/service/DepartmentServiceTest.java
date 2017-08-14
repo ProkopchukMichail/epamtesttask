@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import restservice.dao.DepartmentDAO;
+import service.DepartmentService;
 
 import java.util.Arrays;
 
@@ -18,16 +18,14 @@ import static restservice.TestData.*;
  */
 @ContextConfiguration("classpath:spring/spring-db.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
-@ActiveProfiles("mysql")
+@ActiveProfiles("hsql")
 public class DepartmentServiceTest {
     @Autowired
     private DepartmentService departmentService;
-    @Autowired
-    private DepartmentDAO departmentDAO;
 
     @Test
     public void testGetAll(){
-        Assert.assertEquals(departmentDAO.getAll(), DEPARTMENT_WITH_SALARIES);
+        Assert.assertEquals(departmentService.getAll(), DEPARTMENT_WITH_SALARIES);
     }
 
     @Test

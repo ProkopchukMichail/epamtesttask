@@ -12,6 +12,8 @@
         <module>testtask-restservice</module>
         <module>testtask-model</module>
         <module>testtask-webapplication</module>
+        <module>testtask-dao</module>
+        <module>testtask-service</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
