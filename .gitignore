@@ -1,7 +1,6 @@
 .idea
-*.iml
 logs/
-
+*.iml
 testtask-model/src/main/resources/
 testtask-model/src/test/
 testtask-model/target/
