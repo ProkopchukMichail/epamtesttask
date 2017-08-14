@@ -42,7 +42,7 @@ public class DepartmentServiceTest {
     @Test
     public void testDelete(){
         departmentService.delete(4);
-        Assert.assertEquals(departmentService.getAll(), Arrays.asList(ADMINISTRATION, FINANCE, IT));
+        Assert.assertEquals(departmentService.getAll(), Arrays.asList(ADMINISTRATION_WITH_SALARY,  IT_WITH_SALARY, FINANCE_WITH_SALARY));
     }
 
     @Test
