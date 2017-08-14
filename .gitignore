@@ -1,8 +1,13 @@
 .idea
-logs/
 *.iml
-testtask-model/src/main/resources/
-testtask-model/src/test/
+logs/
+
 testtask-model/target/
 testtask-restservice/target/
 testtask-webapplication/target/
+testtask-dao/src/main/resources/
+testtask-dao/src/test/
+testtask-dao/target/
+testtask-service/src/main/resources/
+testtask-service/src/test/
+testtask-service/target/
