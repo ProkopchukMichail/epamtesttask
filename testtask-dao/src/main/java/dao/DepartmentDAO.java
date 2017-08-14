@@ -1,5 +1,6 @@
 package dao;
 
+
 import model.Department;
 import model.util.DepartmentWithSalary;
 
